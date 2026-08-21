@@ -29,6 +29,7 @@
   --container:1400px;
   --pad-desktop:100px;
   --pad-mobile:20px;
+  --chart-h:520px;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -45,12 +46,14 @@ img{display:block;max-width:100%;}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
 .reveal.on{opacity:1;transform:translateY(0);}
 
-/* ---------- Header (now embedded in the hero, transparent — matches Figma) ---------- */
-.header-pill{position:absolute;top:10px;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,100px);height:68px;}
+/* ---------- Header (glass pill, floating over the hero — matches Figma) ---------- */
+.header-pill{position:absolute;top:20px;left:var(--pad-desktop);right:var(--pad-desktop);z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 32px;height:68px;border-radius:100px;background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,0) 60%),rgba(28,28,30,.05);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);box-shadow:0 12px 32px rgba(0,0,0,.18);}
 .header-pill .logo img,.header-pill .logo svg{display:block;height:24px;width:auto;color:var(--white);}
 nav.main-nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);}
 nav.main-nav a.nav-link,nav.main-nav button.nav-link{font-family:inherit;font-weight:500;font-size:clamp(14px,1.15vw,18px);color:var(--g150);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:0;white-space:nowrap;}
 nav.main-nav button.nav-link svg{width:14px;height:14px;}
+nav.main-nav .nav-search{width:30px;height:30px;background:none;border:none;color:var(--white);cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+nav.main-nav .nav-search svg{width:24px;height:24px;}
 nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:clamp(14px,1.15vw,20px);font-weight:400;padding:10px clamp(14px,1.4vw,20px);border-radius:100px;white-space:nowrap;}
 .header-icons{display:none;align-items:center;gap:16px;}
 .header-icons button{width:30px;height:30px;background:none;border:none;color:var(--white);cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;}
@@ -66,13 +69,16 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .hero-pill-icon{display:inline-block;height:.58em;width:auto;vertical-align:middle;margin-left:.14em;border-radius:100px;}
 .hero-copy{position:absolute;left:0;bottom:0;width:clamp(280px,25vw,420px);max-width:100%;background:var(--bg);border-radius:0 50px 0 0;padding:clamp(20px,2.2vw,30px) clamp(15px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(13px,1.8vw,22px);z-index:3;}
 .hero-copy p{font-size:clamp(14px,1.1vw,20px);line-height:1.3;color:rgba(255,255,255,.9);}
+.hero-scroll-btn{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;background:var(--purple-primary);color:var(--white);display:flex;align-items:center;justify-content:center;z-index:3;transition:background .2s ease,transform .2s ease;}
+.hero-scroll-btn:hover{background:var(--purple-dark);transform:translateX(-50%) translateY(4px);}
+.hero-scroll-btn svg{width:18px;height:11px;}
 .hero-ctas{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,14px);}
 .hero-ctas a{display:flex;align-items:center;justify-content:center;min-height:clamp(38px,3vw,48px);border-radius:100px;font-size:clamp(13px,.95vw,17px);padding:0 clamp(14px,1.6vw,22px);}
 .hero-ctas .primary{background:var(--purple-primary);color:var(--white);}
 .hero-ctas .outline{border:1px solid #68675F;color:var(--white);}
 
 /* ---------- Clientes ---------- */
-.clientes{padding:120px var(--pad-desktop) 130px;text-align:center;}
+.clientes{padding:80px var(--pad-desktop) 90px;text-align:center;}
 .clientes h2{font-size:clamp(28px,3.4vw,44px);line-height:1.2;letter-spacing:-.03em;font-weight:400;margin:0 0 20px;}
 .clientes h2 .dot{color:var(--purple-soft);}
 .clientes p.sub{font-size:18px;line-height:1.6;color:var(--g380);max-width:900px;margin:0 auto 64px;}
@@ -88,7 +94,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 @media (prefers-reduced-motion:reduce){.logo-track{animation:none;}}
 
 /* ---------- Visão ---------- */
-.visao{background:var(--purple-primary);border-top:1px solid var(--purple-primary);border-bottom:1px solid var(--purple-primary);padding:100px var(--pad-desktop);}
+.visao{background:var(--purple-primary);border-top:1px solid var(--purple-primary);border-bottom:1px solid var(--purple-primary);padding:70px var(--pad-desktop);}
 .visao-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:30px;align-items:flex-start;}
 .visao-label{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;color:var(--purple-pastel);}
 .visao h2{font-size:clamp(28px,4vw,56px);line-height:1.14;letter-spacing:-.03em;font-weight:400;color:var(--warm-white);margin:0;}
@@ -98,13 +104,36 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .visao-mobile-only{display:none;}
 .visao .cta{margin-top:10px;}
 
-/* ---------- Impacto (bento) ---------- */
-.impacto{background:var(--bg-inverse);color:var(--bg);padding:130px var(--pad-desktop);}
-.impacto-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:64px;}
+/* ---------- Impacto (bar chart) ---------- */
+.impacto{background:var(--bg-inverse);color:var(--bg);padding:90px var(--pad-desktop);}
+.impacto-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:80px;}
 .impacto-head .eyebrow{color:var(--purple-primary);margin-bottom:20px;}
 .impacto-head h2{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.08;letter-spacing:-.03em;color:var(--bg);margin:0;}
 .impacto-head h2 .dot{color:var(--purple-primary);}
-.stats-grid{display:grid;grid-template-columns:3fr 2fr;grid-template-rows:minmax(230px,auto) minmax(230px,auto) minmax(170px,auto);grid-template-areas:"big stat2" "big stat3" "stat4 stat4";gap:14px;}
+
+.chart{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;align-items:end;}
+.chart-col{display:flex;flex-direction:column;align-items:center;}
+.bar-well{position:relative;width:100%;max-width:242px;height:var(--chart-h,520px);}
+.bar-fill{position:absolute;bottom:0;left:0;width:100%;height:0%;border-radius:24px 24px 0 0;transition:height 1.5s cubic-bezier(.16,.85,.32,1);display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:20px 18px;text-align:center;overflow:hidden;}
+.chart-number{position:absolute;bottom:16px;left:50%;margin:0;transform:translateX(-50%);transition:bottom 1.5s cubic-bezier(.16,.85,.32,1);white-space:nowrap;font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(48px,5.6vw,76px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums;}
+.bar-desc{color:var(--white);font-size:18px;line-height:1.38;margin:0;}
+.bar-source{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.02em;margin:0;}
+
+.chart-col.c-purple .chart-number{color:var(--purple-primary);}
+.chart-col.c-purple .bar-fill{background:linear-gradient(180deg,var(--purple-primary),var(--purple-soft));}
+.chart-col.c-purple .bar-source{color:var(--purple-dark);}
+.chart-col.c-orange .chart-number{color:var(--orange-dark);}
+.chart-col.c-orange .bar-fill{background:linear-gradient(180deg,#FD5820,#FFBBA4);}
+.chart-col.c-orange .bar-source{color:var(--orange-dark);}
+.chart-col.c-pastel .chart-number{color:var(--purple-vivid);}
+.chart-col.c-pastel .bar-fill{background:linear-gradient(180deg,var(--purple-vivid),var(--purple-pastel));}
+.chart-col.c-pastel .bar-source{color:var(--purple-vivid);}
+.chart-col.c-vivid .chart-number{color:var(--purple-dark);}
+.chart-col.c-vivid .bar-fill{background:linear-gradient(180deg,var(--purple-dark) 20%,var(--purple-vivid));}
+.chart-col.c-vivid .bar-source{color:var(--purple-light);}
+
+/* Bento cards — fallback for mobile/tablet, where 4 bars don't fit in one row */
+.stats-grid{display:none;grid-template-columns:3fr 2fr;grid-template-rows:minmax(230px,auto) minmax(230px,auto) minmax(170px,auto);grid-template-areas:"big stat2" "big stat3" "stat4 stat4";gap:14px;}
 .stat-card{border-radius:16px;padding:44px 40px;display:flex;flex-direction:column;justify-content:space-between;}
 .stat-number{font-family:'Inter Tight',sans-serif;font-weight:400;line-height:.92;letter-spacing:-.03em;margin:0;}
 .stat-desc{font-family:'Inter Tight',sans-serif;font-weight:400;line-height:1.45;margin:0;}
@@ -131,7 +160,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .tile-4 .stat-source{border-top:none;padding-top:0;margin:0;}
 
 /* ---------- AI First ---------- */
-.ai-first{padding:140px var(--pad-desktop);}
+.ai-first{padding:90px var(--pad-desktop);}
 .ai-panel{max-width:1240px;margin:0 auto;position:relative;border-radius:28px;overflow:hidden;padding:80px 72px;background:linear-gradient(20deg,rgba(203,107,243,.10) 15%,#1A1A1A 78%);}
 .ai-panel .glow{position:absolute;top:-121px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(203,107,243,.35),transparent 68%);pointer-events:none;}
 .ai-panel-content{position:relative;z-index:2;max-width:1070px;}
@@ -146,7 +175,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .ai-features p{font-size:16px;line-height:1.55;color:var(--g300);}
 
 /* ---------- Capacidades ---------- */
-.capacidades{padding:120px var(--pad-desktop);}
+.capacidades{padding:80px var(--pad-desktop);}
 .cap-inner{max-width:1240px;margin:0 auto;}
 .capacidades .eyebrow{color:var(--purple-soft);margin-bottom:24px;}
 .capacidades h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;color:var(--warm-white);max-width:920px;margin:0 0 20px;}
@@ -164,7 +193,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .cap-cta{margin-top:88px;text-align:center;}
 
 /* ---------- Cases ---------- */
-.cases{background:var(--bg-inverse);color:var(--bg);padding:120px 110px;}
+.cases{background:var(--bg-inverse);color:var(--bg);padding:80px 110px;}
 .cases-inner{max-width:1220px;margin:0 auto;}
 .cases .eyebrow{color:var(--purple-primary);margin-bottom:24px;}
 .cases h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;margin:0 0 20px;max-width:820px;}
@@ -188,7 +217,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .cases-cta{text-align:center;margin-top:80px;}
 
 /* ---------- Depoimentos ---------- */
-.depoimentos{padding:130px var(--pad-desktop);}
+.depoimentos{padding:90px var(--pad-desktop);}
 .dep-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:72px;}
 .dep-head .eyebrow{color:var(--purple-soft);margin-bottom:20px;}
 .dep-head h2{font-size:clamp(30px,3.8vw,52px);line-height:1.04;letter-spacing:-.03em;font-weight:400;color:var(--white);margin:0;max-width:660px;}
@@ -205,7 +234,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .testimonial.is-switching{opacity:0;}
 
 /* ---------- Insights ---------- */
-.insights{background:var(--bg-insights);color:var(--purple-dark);padding:120px var(--pad-desktop);}
+.insights{background:var(--bg-insights);color:var(--purple-dark);padding:80px var(--pad-desktop);}
 .insights-inner{max-width:1240px;margin:0 auto;}
 .insights .eyebrow{color:var(--purple-primary);margin-bottom:24px;}
 .insights h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;color:var(--purple-dark);margin:0 0 20px;max-width:820px;}
@@ -217,7 +246,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .insights-cta{text-align:center;}
 
 /* ---------- CTA Final ---------- */
-.cta-final{background:var(--purple-primary);padding:170px 40px;position:relative;overflow:hidden;text-align:center;}
+.cta-final{background:var(--purple-primary);padding:110px 40px;position:relative;overflow:hidden;text-align:center;}
 .cta-inner{max-width:960px;margin:0 auto;position:relative;z-index:2;}
 .cta-final .eyebrow{color:var(--purple-pastel);margin-bottom:32px;}
 .cta-final h2{font-size:clamp(32px,5.5vw,68px);line-height:1.02;letter-spacing:-.04em;font-weight:400;color:var(--warm-white);margin:0 0 28px;}
@@ -225,7 +254,7 @@ nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:
 .cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
 
 /* ---------- Footer ---------- */
-footer{background:var(--bg);padding:80px 40px 48px;}
+footer{background:var(--bg);padding:64px 40px 48px;}
 .footer-inner{max-width:1163px;margin:0 auto;display:flex;flex-direction:column;gap:60px;}
 .footer-top{display:flex;align-items:center;justify-content:space-between;}
 .footer-top svg{height:31px;width:auto;color:var(--white);}
@@ -252,11 +281,12 @@ footer{background:var(--bg);padding:80px 40px 48px;}
    ===================================================================== */
 @media (max-width:1024px){
   .hero-frame{flex-direction:column;align-items:stretch;justify-content:flex-start;}
+  .hero-scroll-btn{display:none;}
   .hero-title{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;grid-template-columns:1fr;row-gap:.15em;padding:0 24px;}
   .hero-title .col-a,.hero-title .col-b{align-items:center;}
   .hero-title .col-b{grid-column:1;grid-row:2;margin-top:0;}
 
-  .header-pill{padding:0 24px;}
+  .header-pill{left:24px;right:24px;padding:0 24px;}
   nav.main-nav{display:none;}
   .header-icons{display:flex;}
 
@@ -271,16 +301,20 @@ footer{background:var(--bg);padding:80px 40px 48px;}
   .case-img-wrap{width:100%;height:311px;}
 
   .insights-grid{grid-template-columns:1fr 1fr;}
+
+  .impacto-inner{gap:64px;}
+  .chart{display:none;}
+  .stats-grid{display:grid;}
 }
 
 /* =====================================================================
    MOBILE (<768px) — matches Figma "home-mobile" (390 canvas)
    ===================================================================== */
 @media (max-width:767px){
-  :root{--pad-desktop:16px;}
+  :root{--pad-desktop:16px;--chart-h:420px;}
   .wrap,.visao-inner,.impacto-inner,.ai-panel,.cap-inner,.cases-inner,.dep-inner,.insights-inner{padding-left:16px;padding-right:16px;}
 
-  .header-pill{padding:0 16px;top:16px;height:auto;}
+  .header-pill{left:16px;right:16px;padding:0 16px;top:16px;height:auto;min-height:56px;}
   .header-pill .logo img{height:22px;}
 
   .hero-outer{padding:16px;min-height:100dvh;display:flex;}
@@ -388,6 +422,9 @@ footer{background:var(--bg);padding:80px 40px 48px;}
           <a class="nav-link" href="#cases">Cases</a>
           <a class="nav-link" href="#">Carreiras</a>
           <a class="nav-link" href="#insights">Insights</a>
+          <button class="nav-search" type="button" aria-label="Buscar">
+            <svg viewBox="0 0 18 18" fill="none"><path d="M8.25 1.5C4.52208 1.5 1.5 4.52208 1.5 8.25C1.5 11.9779 4.52208 15 8.25 15C9.85547 15 11.3297 14.4375 12.4906 13.5L15.75 16.5L16.5 15.75L13.5 12.4906C14.4375 11.3297 15 9.85547 15 8.25C15 4.52208 11.9779 1.5 8.25 1.5ZM8.25 2.625C11.3466 2.625 13.875 5.15344 13.875 8.25C13.875 11.3466 11.3466 13.875 8.25 13.875C5.15344 13.875 2.625 11.3466 2.625 8.25C2.625 5.15344 5.15344 2.625 8.25 2.625Z" fill="currentColor"/></svg>
+          </button>
           <a class="nav-cta" href="#contato">Fale com a Mosten</a>
         </nav>
         <div class="header-icons">
@@ -416,10 +453,13 @@ footer{background:var(--bg);padding:80px 40px 48px;}
           <a class="outline" href="#cases">Ver os cases</a>
         </div>
       </div>
+      <a href="#clientes" class="hero-scroll-btn" aria-label="Rolar para a próxima seção">
+        <svg viewBox="0 0 20 12" fill="none"><path d="M1 1L10 10L19 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </section>
 
-  <section class="clientes">
+  <section class="clientes" id="clientes">
     <h2>Confiança que se constrói entrega após entrega<span class="dot">.</span></h2>
     <p class="sub">Empresas que operam infraestrutura crítica escolhem a Mosten para sustentar decisão, dado e sistema no dia a dia.</p>
     <div class="logo-marquee"><div class="logo-track dir-left">
@@ -529,6 +569,48 @@ footer{background:var(--bg);padding:80px 40px 48px;}
         <div class="eyebrow">IA EM NÚMEROS</div>
         <h2>A IA deixou de ser tendência<span class="dot">.</span></h2>
       </div>
+      <div class="chart">
+        <div class="chart-col c-purple">
+          <div class="bar-well">
+            <p class="chart-number" data-count-to="88" data-suffix="%">0%</p>
+            <div class="bar-fill" data-target="88">
+              <p class="bar-desc">das organizações já usam IA em pelo menos uma função</p>
+              <p class="bar-source">Fonte: McKinsey, The State of AI in 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-col c-orange">
+          <div class="bar-well">
+            <p class="chart-number" data-count-to="39" data-suffix="%">0%</p>
+            <div class="bar-fill" data-target="39">
+              <p class="bar-desc">das empresas conseguem apontar impacto de IA no EBIT</p>
+              <p class="bar-source">Fonte: McKinsey, The State of AI in 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-col c-pastel">
+          <div class="bar-well">
+            <p class="chart-number" data-count-to="50" data-suffix="%">0%</p>
+            <div class="bar-fill" data-target="50">
+              <p class="bar-desc">das grandes empresas brasileiras utilizam IA</p>
+              <p class="bar-source">Fonte: TIC Empresas 2025</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-col c-vivid">
+          <div class="bar-well">
+            <p class="chart-number" data-count-to="33" data-suffix="%">0%</p>
+            <div class="bar-fill" data-target="33">
+              <p class="bar-desc">das empresas brasileiras planejam ampliar os investimentos em IA</p>
+              <p class="bar-source">Fonte: Pulse of Change 2026</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="stats-grid">
         <div class="stat-card purple tile-big">
           <div>
@@ -636,12 +718,12 @@ footer{background:var(--bg);padding:80px 40px 48px;}
             <div class="case-result">Adoção diária</div>
           </div>
           <div class="case-card row">
-            <div class="case-img-wrap"><img class="case-img" src="assets/case-ogmo-santos.png" alt="Navio porta-contêineres" style="height:100%;margin:0;"></div>
+            <div class="case-img-wrap"><img class="case-img" src="assets/nutrien.png" alt="Fachada Nutrien Soluções Agrícolas" style="height:100%;margin:0;"></div>
             <div class="case-card-text">
-              <div class="case-client">OGMO Santos</div>
-              <div class="case-title">De um relatório de 250 páginas para um portal que a diretoria abre todo dia.</div>
-              <p class="case-desc">Arquitetura integrada, governança de indicadores e portal sob medida.</p>
-              <div class="case-result">Decisão 80% mais rápida</div>
+              <div class="case-client">NUTRIEN</div>
+              <div class="case-title">De R$ 50 mil por execução para uma análise de CNPJs que roda todos os dias.</div>
+              <p class="case-desc">Pipeline automatizada, cruzamento com bases oficiais e blacklist integrada ao fluxo da operação.</p>
+              <div class="case-result">Até R$ 1,5 milhão/mês em economia</div>
             </div>
           </div>
         </div>
@@ -792,6 +874,58 @@ footer{background:var(--bg);padding:80px 40px 48px;}
 })();
 
 (function(){
+  var cols = document.querySelectorAll('.chart-col');
+  if (!cols.length) return;
+
+  function easeOutExpo(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1500;
+    var start = null;
+
+    function step(timestamp){
+      if (start === null) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = easeOutExpo(progress);
+      var current = Math.round(target * eased);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  var NUMBER_GAP = 16;
+
+  var countIo = new IntersectionObserver(function(entries, observer){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var col = entry.target;
+        var well = col.querySelector('.bar-well');
+        var fill = col.querySelector('.bar-fill');
+        var number = col.querySelector('.chart-number');
+        var target = parseFloat(fill.getAttribute('data-target'));
+        var wellHeight = well.getBoundingClientRect().height;
+        var barHeightPx = wellHeight * target / 100;
+        requestAnimationFrame(function(){
+          fill.style.height = target + '%';
+          number.style.bottom = (barHeightPx + NUMBER_GAP) + 'px';
+        });
+        animateCount(number);
+        observer.unobserve(col);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  cols.forEach(function(col){ countIo.observe(col); });
+})();
+
+(function(){
   var numbers = document.querySelectorAll('.stat-number[data-count-to]');
   if (!numbers.length) return;
 
@@ -819,7 +953,7 @@ footer{background:var(--bg);padding:80px 40px 48px;}
     requestAnimationFrame(step);
   }
 
-  var countIo = new IntersectionObserver(function(entries, observer){
+  var statIo = new IntersectionObserver(function(entries, observer){
     entries.forEach(function(entry){
       if (entry.isIntersecting) {
         animateCount(entry.target);
@@ -828,7 +962,7 @@ footer{background:var(--bg);padding:80px 40px 48px;}
     });
   }, { threshold: 0.4 });
 
-  numbers.forEach(function(el){ countIo.observe(el); });
+  numbers.forEach(function(el){ statIo.observe(el); });
 })();
 
 (function(){
