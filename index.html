@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mosten — Transformamos tecnologia em vantagem competitiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0A0A;
+  --bg-inverse:#F3F1EC;
+  --bg-insights:#F6F1FF;
+  --white:#F8F8F7;
+  --warm-white:#F4F3EF;
+  --purple-primary:#612CB5;
+  --purple-light:#E9DCFF;
+  --purple-pastel:#E8B0FF;
+  --purple-vivid:#AD39DE;
+  --purple-soft:#AA81F0;
+  --purple-bright:#CB6BF3;
+  --purple-dark:#462083;
+  --orange-dark:#B83002;
+  --orange-mid:#C93504;
+  --g150:#E4E4E4; --g180:#DFDFDF; --g250:#C8C8C8; --g300:#BCBCBC; --g360:#ABACAC;
+  --g380:#A5A5A5; --g400:#9D9DA1; --g500:#77777C; --g650-l:#68675F; --g700-l:#5B5A54;
+  --border-dark:rgba(244,243,239,.14);
+  --container:1400px;
+  --pad-desktop:100px;
+  --pad-mobile:20px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--white);font-family:'Inter Tight',ui-sans-serif,system-ui,sans-serif;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+p{margin:0;}
+img{display:block;max-width:100%;}
+.wrap{max-width:var(--container);margin:0 auto;padding-left:var(--pad-desktop);padding-right:var(--pad-desktop);}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-soft);}
+.pill-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:100px;font-size:18px;padding:14px 26px;white-space:nowrap;}
+.pill-btn.solid-dark{background:var(--bg);color:var(--warm-white);}
+.pill-btn.solid-purple{background:var(--purple-primary);color:var(--white);}
+.pill-btn.outline-light{border:1px solid var(--purple-light);color:var(--purple-light);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* ---------- Header (now embedded in the hero, transparent — matches Figma) ---------- */
+.header-pill{position:absolute;top:10px;left:0;right:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(24px,6vw,100px);height:68px;}
+.header-pill .logo img,.header-pill .logo svg{display:block;height:24px;width:auto;color:var(--white);}
+nav.main-nav{display:flex;align-items:center;gap:clamp(14px,2.4vw,36px);}
+nav.main-nav a.nav-link,nav.main-nav button.nav-link{font-family:inherit;font-weight:500;font-size:clamp(14px,1.15vw,18px);color:var(--g150);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:0;white-space:nowrap;}
+nav.main-nav button.nav-link svg{width:14px;height:14px;}
+nav.main-nav .nav-cta{background:var(--purple-bright);color:var(--bg);font-size:clamp(14px,1.15vw,20px);font-weight:400;padding:10px clamp(14px,1.4vw,20px);border-radius:100px;white-space:nowrap;}
+.header-icons{display:none;align-items:center;gap:16px;}
+.header-icons button{width:30px;height:30px;background:none;border:none;color:var(--white);cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;}
+.header-icons svg{width:24px;height:24px;}
+
+/* ---------- Hero ---------- */
+.hero-outer{padding:20px;min-height:100vh;box-sizing:border-box;display:flex;}
+.hero-frame{position:relative;border-radius:28px;overflow:hidden;flex:1;min-height:0;background:#6B3FA0 url('assets/mosten-hero-bg.png') center/cover no-repeat;display:flex;align-items:center;justify-content:center;}
+.hero-title{position:relative;z-index:2;display:grid;grid-template-columns:max-content max-content;column-gap:clamp(18px,3vw,58px);align-items:start;margin:0;padding:0 40px;font-size:clamp(34px,6vw,130px);line-height:.94;letter-spacing:-.03em;font-weight:400;color:var(--white);}
+.hero-title .col-a{grid-column:1;grid-row:1;display:flex;flex-direction:column;}
+.hero-title .col-b{grid-column:2;grid-row:1;display:flex;flex-direction:column;margin-top:1em;}
+.hero-title em{font-style:italic;background:linear-gradient(90deg,#F7E4FF 0%,#F0CCFF 14%,#E9B3FF 70%,#DA83FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero-pill-icon{display:inline-block;height:.58em;width:auto;vertical-align:middle;margin-left:.14em;border-radius:100px;}
+.hero-copy{position:absolute;left:0;bottom:0;width:clamp(280px,25vw,420px);max-width:100%;background:var(--bg);border-radius:0 50px 0 0;padding:clamp(20px,2.2vw,30px) clamp(15px,1.6vw,20px);display:flex;flex-direction:column;gap:clamp(13px,1.8vw,22px);z-index:3;}
+.hero-copy p{font-size:clamp(14px,1.1vw,20px);line-height:1.3;color:rgba(255,255,255,.9);}
+.hero-ctas{display:flex;flex-direction:column;gap:clamp(10px,1.2vw,14px);}
+.hero-ctas a{display:flex;align-items:center;justify-content:center;min-height:clamp(38px,3vw,48px);border-radius:100px;font-size:clamp(13px,.95vw,17px);padding:0 clamp(14px,1.6vw,22px);}
+.hero-ctas .primary{background:var(--purple-primary);color:var(--white);}
+.hero-ctas .outline{border:1px solid #68675F;color:var(--white);}
+
+/* ---------- Clientes ---------- */
+.clientes{padding:120px var(--pad-desktop) 130px;text-align:center;}
+.clientes h2{font-size:clamp(28px,3.4vw,44px);line-height:1.2;letter-spacing:-.03em;font-weight:400;margin:0 0 20px;}
+.clientes h2 .dot{color:var(--purple-soft);}
+.clientes p.sub{font-size:18px;line-height:1.6;color:var(--g380);max-width:900px;margin:0 auto 64px;}
+.logo-marquee{overflow:hidden;width:100%;margin-bottom:16px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+.logo-track{display:flex;width:max-content;gap:16px;animation:marquee-left 42s linear infinite;}
+.logo-track.dir-right{animation-name:marquee-right;}
+.logo-dup{display:contents;}
+.logo-track:hover{animation-play-state:paused;}
+.logo-chip{width:200px;height:96px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#191919;border:1px solid #000;border-radius:10px;padding:0 24px;}
+.logo-chip img{max-width:100%;max-height:44px;width:auto;height:auto;object-fit:contain;opacity:.85;}
+@keyframes marquee-left{from{transform:translateX(0);}to{transform:translateX(-25%);}}
+@keyframes marquee-right{from{transform:translateX(-25%);}to{transform:translateX(0);}}
+@media (prefers-reduced-motion:reduce){.logo-track{animation:none;}}
+
+/* ---------- Visão ---------- */
+.visao{background:var(--purple-primary);border-top:1px solid var(--purple-primary);border-bottom:1px solid var(--purple-primary);padding:100px var(--pad-desktop);}
+.visao-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:30px;align-items:flex-start;}
+.visao-label{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px;letter-spacing:.08em;color:var(--purple-pastel);}
+.visao h2{font-size:clamp(28px,4vw,56px);line-height:1.14;letter-spacing:-.03em;font-weight:400;color:var(--warm-white);margin:0;}
+.visao h2 .dim{color:rgba(244,243,239,.35);}
+.visao h2 .accent{color:var(--purple-pastel);}
+.visao p.desc{font-size:20px;line-height:1.6;color:#D4D4D4;max-width:620px;}
+.visao-mobile-only{display:none;}
+.visao .cta{margin-top:10px;}
+
+/* ---------- Impacto (bento) ---------- */
+.impacto{background:var(--bg-inverse);color:var(--bg);padding:130px var(--pad-desktop);}
+.impacto-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:64px;}
+.impacto-head .eyebrow{color:var(--purple-primary);margin-bottom:20px;}
+.impacto-head h2{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.08;letter-spacing:-.03em;color:var(--bg);margin:0;}
+.impacto-head h2 .dot{color:var(--purple-primary);}
+.stats-grid{display:grid;grid-template-columns:3fr 2fr;grid-template-rows:minmax(230px,auto) minmax(230px,auto) minmax(170px,auto);grid-template-areas:"big stat2" "big stat3" "stat4 stat4";gap:14px;}
+.stat-card{border-radius:16px;padding:44px 40px;display:flex;flex-direction:column;justify-content:space-between;}
+.stat-number{font-family:'Inter Tight',sans-serif;font-weight:400;line-height:.92;letter-spacing:-.03em;margin:0;}
+.stat-desc{font-family:'Inter Tight',sans-serif;font-weight:400;line-height:1.45;margin:0;}
+.stat-source{font-family:'Inter Tight',sans-serif;font-weight:400;font-size:13px;line-height:1.4;opacity:.62;padding-top:20px;margin:24px 0 0;border-top:1px solid currentColor;}
+.stat-card.purple{background:var(--purple-light);color:var(--purple-primary);}
+.stat-card.orange{background:#F4E4DB;}
+.stat-card.orange .stat-number{color:var(--orange-dark);}
+.stat-card.orange .stat-desc,.stat-card.orange .stat-source{color:#BC3204;}
+.stat-card.pastel{background:var(--purple-pastel);color:var(--purple-primary);}
+.stat-card.vivid{background:var(--purple-light);color:var(--purple-vivid);}
+.stat-card.vivid .stat-desc,.stat-card.vivid .stat-source{color:var(--purple-primary);}
+.tile-big{grid-area:big;}
+.tile-big .stat-number{font-size:clamp(72px,7.5vw,100px);margin-bottom:24px;}
+.tile-big .stat-desc{font-size:19px;max-width:400px;}
+.tile-2{grid-area:stat2;}
+.tile-3{grid-area:stat3;}
+.tile-2 .stat-number,.tile-3 .stat-number{font-size:clamp(44px,4.2vw,52px);margin-bottom:14px;}
+.tile-2 .stat-desc,.tile-3 .stat-desc{font-size:15px;}
+.tile-2 .stat-source,.tile-3 .stat-source{margin-top:16px;padding-top:16px;}
+.tile-4{grid-area:stat4;flex-direction:row;align-items:center;gap:40px;padding:32px 44px;}
+.tile-4 .stat-number{font-size:clamp(52px,5.5vw,68px);flex-shrink:0;}
+.tile-4 .stat-body{display:flex;flex-direction:column;flex:1;min-width:0;gap:8px;}
+.tile-4 .stat-desc{font-size:17px;margin:0;}
+.tile-4 .stat-source{border-top:none;padding-top:0;margin:0;}
+
+/* ---------- AI First ---------- */
+.ai-first{padding:140px var(--pad-desktop);}
+.ai-panel{max-width:1240px;margin:0 auto;position:relative;border-radius:28px;overflow:hidden;padding:80px 72px;background:linear-gradient(20deg,rgba(203,107,243,.10) 15%,#1A1A1A 78%);}
+.ai-panel .glow{position:absolute;top:-121px;right:-120px;width:520px;height:520px;background:radial-gradient(circle,rgba(203,107,243,.35),transparent 68%);pointer-events:none;}
+.ai-panel-content{position:relative;z-index:2;max-width:1070px;}
+.ai-panel .eyebrow{color:var(--purple-soft);margin-bottom:24px;}
+.ai-panel h2{font-size:clamp(28px,4vw,50px);line-height:1.05;letter-spacing:-.03em;font-weight:400;color:var(--warm-white);max-width:860px;margin:0 0 24px;}
+.ai-panel p.desc{font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--g250);max-width:640px;margin:0 0 64px;}
+.ai-features{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(248,248,247,.4);}
+.ai-features div{padding:26px 24px 0 0;border-right:1px solid rgba(248,248,247,.4);}
+.ai-features div:last-child{border-right:none;padding-right:0;}
+.ai-features div:not(:first-child){padding-left:24px;}
+.ai-features span{display:block;font-size:21px;font-weight:400;color:var(--warm-white);margin-bottom:10px;}
+.ai-features p{font-size:16px;line-height:1.55;color:var(--g300);}
+
+/* ---------- Capacidades ---------- */
+.capacidades{padding:120px var(--pad-desktop);}
+.cap-inner{max-width:1240px;margin:0 auto;}
+.capacidades .eyebrow{color:var(--purple-soft);margin-bottom:24px;}
+.capacidades h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;color:var(--warm-white);max-width:920px;margin:0 0 20px;}
+.capacidades p.desc{font-size:18px;line-height:1.55;color:#A8A8AA;max-width:640px;margin:0 0 88px;}
+.cap-rows{display:flex;flex-direction:column;gap:100px;}
+.cap-row{display:grid;grid-template-columns:160px 1fr;gap:48px;padding:52px 0;border-top:1px solid var(--border-dark);align-items:start;}
+.cap-row.alt{grid-template-columns:minmax(0,520px) 160px;justify-content:end;}
+.cap-num{font-family:'JetBrains Mono',monospace;font-size:80px;font-weight:500;color:rgba(134,84,214,.9);letter-spacing:-.03em;line-height:1;}
+.cap-row.alt .cap-num{order:2;text-align:right;}
+.cap-row.alt .cap-body{order:1;}
+.cap-title{font-size:30px;line-height:1.15;letter-spacing:-.02em;font-weight:400;color:var(--warm-white);margin:0 0 16px;max-width:520px;}
+.cap-desc{font-size:18px;line-height:1.6;color:#ABACAC;margin:0 0 20px;max-width:520px;}
+.cap-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.cap-tags span{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--purple-soft);border:1px solid var(--purple-primary);border-radius:100px;padding:5px 12px;}
+.cap-cta{margin-top:88px;text-align:center;}
+
+/* ---------- Cases ---------- */
+.cases{background:var(--bg-inverse);color:var(--bg);padding:120px 110px;}
+.cases-inner{max-width:1220px;margin:0 auto;}
+.cases .eyebrow{color:var(--purple-primary);margin-bottom:24px;}
+.cases h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;margin:0 0 20px;max-width:820px;}
+.cases p.desc{font-size:18px;line-height:1.55;color:var(--g650-l);max-width:560px;margin:0 0 80px;}
+.cases-grid{display:flex;align-items:flex-start;}
+.cases-col{display:flex;flex-direction:column;min-width:0;flex:1;}
+.cases-col:first-child{flex:3;border-right:1px solid rgba(10,10,10,.10);}
+.cases-col:last-child{flex:2;}
+.case-card{background:var(--bg-inverse);padding:52px 44px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid rgba(10,10,10,.10);}
+.cases-col>.case-card:last-child{border-bottom:none;}
+.case-card-text{display:flex;flex-direction:column;gap:12px;}
+.case-card.row{flex-direction:row;align-items:center;gap:24px;}
+.case-img{width:100%;height:311px;border-radius:6px;object-fit:cover;background:#D9D9D9;margin-bottom:4px;}
+.case-img.tall{height:533px;}
+.case-img-wrap{width:356px;flex-shrink:0;height:100%;border-radius:6px;overflow:hidden;background:#D9D9D9;}
+.case-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.case-client{font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--g650-l);}
+.case-title{font-size:26px;line-height:1.2;letter-spacing:-.02em;font-weight:400;max-width:400px;}
+.case-desc{font-size:17px;line-height:1.55;color:var(--g700-l);max-width:400px;}
+.case-result{font-family:'JetBrains Mono',monospace;font-size:17px;font-weight:500;color:var(--purple-primary);}
+.cases-cta{text-align:center;margin-top:80px;}
+
+/* ---------- Depoimentos ---------- */
+.depoimentos{padding:130px var(--pad-desktop);}
+.dep-inner{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:72px;}
+.dep-head .eyebrow{color:var(--purple-soft);margin-bottom:20px;}
+.dep-head h2{font-size:clamp(30px,3.8vw,52px);line-height:1.04;letter-spacing:-.03em;font-weight:400;color:var(--white);margin:0;max-width:660px;}
+.testimonial{display:flex;flex-direction:column;gap:20px;}
+.dep-profile{display:flex;align-items:center;gap:20px;}
+.dep-avatar{width:60px;height:60px;border-radius:7px;background:#3a2a55;flex-shrink:0;object-fit:cover;}
+.dep-name{font-size:26px;color:var(--purple-soft);}
+.dep-role{font-size:20px;color:#9D9DA1;}
+.dep-quote{font-style:italic;font-size:clamp(22px,2.6vw,36px);line-height:1.55;color:var(--warm-white);max-width:1100px;}
+.dep-buttons{display:flex;gap:22px;align-self:center;}
+.dep-buttons button{width:40px;height:40px;border-radius:20px;background:var(--purple-primary);border:none;color:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.dep-buttons button svg{width:20px;height:20px;}
+.testimonial{transition:opacity .2s ease;}
+.testimonial.is-switching{opacity:0;}
+
+/* ---------- Insights ---------- */
+.insights{background:var(--bg-insights);color:var(--purple-dark);padding:120px var(--pad-desktop);}
+.insights-inner{max-width:1240px;margin:0 auto;}
+.insights .eyebrow{color:var(--purple-primary);margin-bottom:24px;}
+.insights h2{font-size:clamp(30px,4.6vw,56px);line-height:1.02;letter-spacing:-.035em;font-weight:400;color:var(--purple-dark);margin:0 0 20px;max-width:820px;}
+.insights p.desc{font-size:17px;line-height:1.55;color:var(--purple-dark);max-width:560px;margin:0 0 80px;}
+.insights-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:44px;margin-bottom:64px;}
+.insight-card img{width:100%;height:311px;border-radius:6px;object-fit:cover;background:#ddd;margin-bottom:16px;}
+.insight-label{font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;}
+.insight-title{font-size:24px;line-height:1.2;letter-spacing:-.02em;color:var(--purple-dark);}
+.insights-cta{text-align:center;}
+
+/* ---------- CTA Final ---------- */
+.cta-final{background:var(--purple-primary);padding:170px 40px;position:relative;overflow:hidden;text-align:center;}
+.cta-inner{max-width:960px;margin:0 auto;position:relative;z-index:2;}
+.cta-final .eyebrow{color:var(--purple-pastel);margin-bottom:32px;}
+.cta-final h2{font-size:clamp(32px,5.5vw,68px);line-height:1.02;letter-spacing:-.04em;font-weight:400;color:var(--warm-white);margin:0 0 28px;}
+.cta-final p.desc{font-size:22px;line-height:1.5;color:#DFDFDF;margin:0 0 48px;}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+
+/* ---------- Footer ---------- */
+footer{background:var(--bg);padding:80px 40px 48px;}
+.footer-inner{max-width:1163px;margin:0 auto;display:flex;flex-direction:column;gap:60px;}
+.footer-top{display:flex;align-items:center;justify-content:space-between;}
+.footer-top svg{height:31px;width:auto;color:var(--white);}
+.footer-social{display:flex;gap:14px;}
+.footer-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border-dark);display:flex;align-items:center;justify-content:center;font-size:14px;}
+.footer-cols{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap;}
+.footer-contact{display:flex;flex-direction:column;gap:44px;max-width:374px;}
+.footer-contact .lines{display:flex;flex-direction:column;gap:18px;font-size:16px;}
+.footer-contact .rule{height:1px;background:rgba(244,243,239,.15);}
+.footer-legal{display:flex;flex-direction:column;gap:18px;font-size:16px;}
+.footer-copy{color:var(--purple-bright);font-size:14px;}
+.footer-links{display:flex;flex-direction:column;gap:18px;font-size:16px;}
+.footer-news p.title{font-family:'Inter Tight';font-weight:500;font-size:clamp(28px,3vw,48px);color:var(--purple-bright);margin:0 0 20px;}
+.footer-news p.desc{font-size:18px;color:var(--white);max-width:520px;margin:0 0 32px;}
+.footer-news form{display:flex;max-width:638px;}
+.footer-news input{flex:1;background:#191919;border:1px solid #5B5A54;border-radius:32px 0 0 32px;padding:0 20px;height:56px;color:var(--white);font-size:15.5px;font-family:inherit;min-width:0;}
+.footer-news input::placeholder{color:#77777C;}
+.footer-news button{background:var(--purple-bright);color:var(--bg);border:none;border-radius:0 100px 100px 0;padding:0 24px;font-size:17px;font-family:inherit;cursor:pointer;}
+
+/* =====================================================================
+   MOBILE + TABLET (<=1024px) — hero title & icon pill centered both axes,
+   nav collapses to icons (full nav needs ~1200px to not wrap/overflow),
+   3-column grids fall back to 2 columns so text has room to breathe
+   ===================================================================== */
+@media (max-width:1024px){
+  .hero-frame{flex-direction:column;align-items:stretch;justify-content:flex-start;}
+  .hero-title{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;grid-template-columns:1fr;row-gap:.15em;padding:0 24px;}
+  .hero-title .col-a,.hero-title .col-b{align-items:center;}
+  .hero-title .col-b{grid-column:1;grid-row:2;margin-top:0;}
+
+  .header-pill{padding:0 24px;}
+  nav.main-nav{display:none;}
+  .header-icons{display:flex;}
+
+  .ai-first{padding:96px 24px;}
+  .ai-features{grid-template-columns:1fr 1fr;row-gap:24px;}
+  .ai-features div:nth-child(2){border-right:none;padding-right:0;}
+  .ai-features div:nth-child(3){border-right:1px solid rgba(248,248,247,.4);padding-left:0;margin-left:-1px;}
+
+  .cases-grid{flex-direction:column;}
+  .cases-col,.cases-col:first-child,.cases-col:last-child{flex:none;width:100%;border-right:none;}
+  .case-card,.case-card.row{flex-direction:column;align-items:stretch;}
+  .case-img-wrap{width:100%;height:311px;}
+
+  .insights-grid{grid-template-columns:1fr 1fr;}
+}
+
+/* =====================================================================
+   MOBILE (<768px) — matches Figma "home-mobile" (390 canvas)
+   ===================================================================== */
+@media (max-width:767px){
+  :root{--pad-desktop:16px;}
+  .wrap,.visao-inner,.impacto-inner,.ai-panel,.cap-inner,.cases-inner,.dep-inner,.insights-inner{padding-left:16px;padding-right:16px;}
+
+  .header-pill{padding:0 16px;top:16px;height:auto;}
+  .header-pill .logo img{height:22px;}
+
+  .hero-outer{padding:16px;min-height:100dvh;display:flex;}
+  .hero-frame{min-height:auto;flex:1;flex-direction:column;align-items:stretch;justify-content:flex-end;}
+  .hero-title{font-size:clamp(40px,11vw,56px);}
+  .hero-copy{position:static;width:auto;max-width:none;border-radius:16px 16px 0 0;margin:12px 16px 0;}
+
+  .clientes{padding:60px 16px;}
+  .clientes p.sub{margin-bottom:40px;}
+  .logo-marquee{-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);margin-bottom:10px;}
+  .logo-track{gap:10px;animation-duration:26s;}
+  .logo-chip{width:140px;height:70px;padding:0 16px;}
+  .logo-chip img{max-height:30px;}
+
+  .visao{padding:64px 16px;}
+  .visao h2{font-size:clamp(26px,7vw,34px);}
+  .visao p.desc{font-size:16px;}
+  .visao-desktop-only{display:none;}
+  .visao-mobile-only{display:block;}
+  .visao p.desc.visao-mobile-accent{color:#E8B0FF;}
+
+  .impacto{padding:64px 16px;}
+  .impacto-inner{gap:40px;}
+  .impacto-head{position:sticky;top:16px;z-index:5;background:var(--bg-inverse);min-height:172px;padding-bottom:16px;}
+  .stats-grid{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"big" "stat2" "stat3" "stat4";gap:24px;}
+  .stat-card{padding:36px 32px;}
+  .tile-big{position:sticky;top:212px;z-index:1;}
+  .tile-2{position:sticky;top:236px;z-index:2;}
+  .tile-3{position:sticky;top:260px;z-index:3;}
+  .tile-4{position:sticky;top:284px;z-index:4;flex-direction:column;align-items:flex-start;gap:16px;padding:36px 32px;}
+  .tile-4 .stat-source{border-top:1px solid currentColor;padding-top:16px;margin-top:4px;}
+
+  .ai-first{padding:64px 16px;}
+  .ai-panel{padding:24px;}
+  .ai-panel h2{font-size:clamp(26px,7vw,34px);}
+  .ai-features{grid-template-columns:1fr;border-top:none;gap:24px;}
+  .ai-features div{border-right:none !important;padding:0 !important;}
+
+  .capacidades{padding:64px 16px;}
+  .capacidades p.desc{margin-bottom:48px;}
+  .cap-rows{gap:0;}
+  .cap-row,.cap-row.alt{grid-template-columns:1fr;gap:12px;padding:36px 0;}
+  .cap-row .cap-num,.cap-row.alt .cap-num{order:0;text-align:left;font-size:56px;}
+  .cap-row.alt .cap-body{order:1;}
+  .cap-title{font-size:22px;}
+  .cap-desc{font-size:16px;}
+
+  .cases{padding:64px 16px;}
+  .cases p.desc{margin-bottom:40px;}
+  .cases-grid{flex-direction:column;}
+  .cases-col,.cases-col:first-child,.cases-col:last-child{flex:none;width:100%;border-right:none;}
+  .case-card,.case-card.row{flex-direction:column;padding:0;gap:16px;padding-bottom:36px;}
+  .case-img-wrap{width:100%;height:260px;}
+  .case-img,.case-img.tall{height:260px;}
+  .case-title,.case-desc{max-width:none;}
+
+  .depoimentos{padding:64px 16px;}
+  .dep-name{font-size:16px;}
+  .dep-role{font-size:13px;}
+  .dep-quote{font-size:22px;}
+  .dep-buttons button{width:44px;height:44px;border-radius:22px;}
+
+  .insights{padding:64px 16px;}
+  .insights p.desc{margin-bottom:40px;}
+  .insights-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:16px;margin:0 -16px 32px;padding:0 16px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .insights-grid::-webkit-scrollbar{display:none;}
+  .insight-card{flex:0 0 82%;scroll-snap-align:start;}
+
+  .cta-final{padding:96px 16px;}
+  .cta-final h2{font-size:clamp(28px,9vw,40px);}
+  .cta-actions{flex-direction:column;width:100%;}
+  .cta-actions .pill-btn{width:100%;}
+
+  footer{padding:56px 16px 32px;}
+  .footer-cols{flex-direction:column;gap:48px;}
+  .footer-news form{flex-direction:column;gap:10px;}
+  .footer-news input{border-radius:32px;}
+  .footer-news button{border-radius:100px;height:48px;}
+}
+</style>
+</head>
+<body>
+
+<main id="top">
+
+  <section class="hero-outer">
+    <div class="hero-frame">
+      <div class="header-pill">
+        <a href="#top" class="logo" aria-label="Mosten">
+          <svg viewBox="181.54 397.89 1557.69 285.31" xmlns="http://www.w3.org/2000/svg" fill="none" width="131" height="24">
+            <path fill="currentColor" d="M1250.14,629.78c-13.79,0-23.41-2.81-28.87-8.43-5.48-5.62-8.21-14.41-8.21-26.4v-74.01c0-2.54,2.06-4.6,4.6-4.6h61.06c2.31,0,4.18-1.87,4.18-4.18v-42.13c0-2.31-1.87-4.18-4.18-4.18h-62.44c-2.56,0-4.62-2.09-4.6-4.65l.59-59.69c.03-2.57-2.59-4.33-4.96-3.34l-48.68,20.39c-1.34.56-2.2,1.87-2.2,3.32l.18,39.35c.01,2.55-2.05,4.62-4.6,4.62h-19.47c-2.31,0-4.18,1.87-4.18,4.18v42.13c0,2.31,1.87,4.18,4.18,4.18h18.84c2.54,0,4.6,2.06,4.6,4.6v82.56c0,16.63,2.47,30.64,7.41,42.02,4.94,11.39,13,19.89,24.15,25.51,11.16,5.61,26.1,8.42,44.83,8.42,11.09,0,21.47-.97,31.12-2.92,9.67-1.95,18.24-4.64,25.73-8.08l4.95-48.1c-6.29,2.85-13.19,5.13-20.67,6.86-7.5,1.73-15.28,2.59-23.37,2.59Z"></path>
+            <path fill="currentColor" d="M862.34,479.16c-23.15-19.48-56.67-29.22-100.56-29.22s-77.23,9.74-100.45,29.22c-23.23,19.48-34.83,47.04-34.83,82.69v9.89c0,35.81,11.57,63.33,34.72,82.59,23.15,19.24,56.67,28.87,100.56,28.87s77.41-9.63,100.56-28.87c23.15-19.26,34.72-46.78,34.72-82.59v-9.89c0-35.65-11.57-63.21-34.72-82.69ZM821.33,572.41c0,16.93-5.25,29.97-15.73,39.11-10.49,9.14-25.09,13.7-43.82,13.7s-33.48-4.56-43.82-13.7c-10.34-9.14-15.51-22.17-15.51-39.11v-11.23c0-17.08,5.17-30.19,15.51-39.33,10.34-9.13,24.86-13.7,43.59-13.7s33.74,4.58,44.16,13.7c10.41,9.14,15.62,22.25,15.62,39.33v11.23Z"></path>
+            <path fill="currentColor" d="M533.94,458.23h-72.43l-36.07,15.35v-.82c0-8.03-6.51-14.53-14.53-14.53h-117.38l-37.09,15.78v-9.14c0-3.52-3.58-5.9-6.83-4.55l-65.04,27.12c-1.84.77-3.03,2.56-3.03,4.55v183.07h74.9v-129.6l81.72-34.91c6.12-2.62,12.93,1.88,12.93,8.53v155.98h74.35v-130.03l80.71-34.48c6.12-2.62,12.92,1.88,12.92,8.53v155.98h74.35v-157.33c0-32.85-26.64-59.49-59.49-59.49Z"></path>
+            <path fill="currentColor" d="M1689.32,459.52h-58.89l-36.81,15.67v-9.64c0-3.67-3.73-6.17-7.13-4.76l-42.05,17.39c-1.93.8-3.19,2.68-3.19,4.76v193.4h52.37v-149.89l82.16-35.1c8.71-3.72,18.38,2.67,18.38,12.13v172.85h45.07v-166.91c0-27.57-22.34-49.91-49.91-49.91Z"></path>
+            <path fill="currentColor" d="M1078.06,557.02c-11.31-5.17-26.18-9.77-44.61-13.82-12.44-2.85-22.02-5.51-28.77-7.98-6.74-2.46-11.35-5.12-13.82-7.97-2.48-2.84-3.71-6.29-3.71-10.34v-.9c0-3.74,1.08-6.89,3.25-9.44,2.17-2.55,5.95-4.49,11.35-5.84,5.39-1.35,12.65-2.02,21.8-2.02,14.83,0,28.83,1.61,42.02,4.83,7.43,1.82,14.28,3.97,20.79,6.32,2.57.93,5.24-.93,5.24-3.66v-39.54c0-1.58-.89-3.02-2.35-3.64-7.75-3.29-16.79-6.24-27.27-8.8-13.48-3.3-28.84-4.95-46.07-4.95-29.66,0-52.1,5.37-67.3,16.07-15.21,10.71-22.81,26.78-22.81,48.21v1.8c0,11.99,2.32,22.22,6.97,30.68,4.64,8.46,12.32,15.65,23.03,21.57,10.71,5.92,25.28,10.98,43.7,15.17,12.88,3,22.89,5.66,30,7.98,7.11,2.32,12.06,4.94,14.83,7.86,2.77,2.92,4.16,6.64,4.16,11.13v1.12c0,6.59-2.96,11.5-8.88,14.72-5.92,3.22-15.77,4.84-29.55,4.84-16.33,0-31.43-1.95-45.28-5.84-9.6-2.7-18.47-5.71-26.83-8.93-2.57-.99-5.28.88-5.28,3.64v43.39c0,1.63.93,3.09,2.44,3.68,9.18,3.6,20.07,6.86,32.71,9.78,13.93,3.23,29.66,4.84,47.19,4.84,32.36,0,56.4-5.73,72.14-17.19,15.73-11.46,23.59-28.8,23.59-52.02v-2.25c0-13.48-2.62-24.3-7.86-32.46-5.25-8.17-13.52-14.83-24.83-20Z"></path>
+            <path fill="currentColor" d="M1472.21,461.06c-14.46-7.71-32.47-11.56-54.05-11.56-32.06,0-56.44,8.64-73.14,25.95-16.71,17.31-25.06,41.84-25.06,73.6v32.36c0,32.21,8.95,56.85,26.85,73.92,17.9,17.08,45.06,25.63,81.46,25.63,16.18,0,30.94-1.72,44.27-5.17,12.95-3.34,29.76-7.77,39.6-13.24v-39.51c-9.58,4.52-25,8.37-35.55,11.17-12.44,3.3-25.61,4.94-39.55,4.94-12.44,0-22.96-1.23-31.58-3.7-8.62-2.48-15.54-6.03-20.78-10.67-5.25-4.65-9.03-10.07-11.35-16.29-2.32-6.22-3.48-13.15-3.48-20.79v-3.37h143.14c.75-4.95,1.35-10.11,1.8-15.51.45-5.4.67-10.71.67-15.96v-8.08c0-19.63-3.59-36.55-10.78-50.78-7.19-14.23-18.02-25.21-32.47-32.93ZM1464.19,542.11l-91.55.84c-1.77.02-3.25-1.51-3.2-3.28.49-15.62,4.47-27.75,11.97-36.36,8.01-9.21,20.26-13.82,36.74-13.82,11.09,0,20.26,2.06,27.53,6.18,7.27,4.12,12.7,10.07,16.29,17.86,3.25,7.03,5.03,15.46,5.35,25.3.06,1.74-1.39,3.25-3.13,3.26Z"></path>
+          </svg>
+        </a>
+        <nav class="main-nav">
+          <a class="nav-link" href="#top">Home</a>
+          <a class="nav-link" href="#">Empresa</a>
+          <button class="nav-link" type="button">O que fazemos
+            <svg viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <a class="nav-link" href="#cases">Cases</a>
+          <a class="nav-link" href="#">Carreiras</a>
+          <a class="nav-link" href="#insights">Insights</a>
+          <a class="nav-cta" href="#contato">Fale com a Mosten</a>
+        </nav>
+        <div class="header-icons">
+          <button type="button" aria-label="Buscar">
+            <svg viewBox="0 0 18 18" fill="none"><path d="M8.25 1.5C4.52208 1.5 1.5 4.52208 1.5 8.25C1.5 11.9779 4.52208 15 8.25 15C9.85547 15 11.3297 14.4375 12.4906 13.5L15.75 16.5L16.5 15.75L13.5 12.4906C14.4375 11.3297 15 9.85547 15 8.25C15 4.52208 11.9779 1.5 8.25 1.5ZM8.25 2.625C11.3466 2.625 13.875 5.15344 13.875 8.25C13.875 11.3466 11.3466 13.875 8.25 13.875C5.15344 13.875 2.625 11.3466 2.625 8.25C2.625 5.15344 5.15344 2.625 8.25 2.625Z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <h1 class="hero-title">
+        <span class="col-a">
+          <span>Transformamos</span>
+          <span>tecnologia <img src="assets/mosten-hero-icons.png" alt="" class="hero-pill-icon"></span>
+        </span>
+        <span class="col-b">
+          <span>em <em>vantagem</em></span>
+          <span>competitiva.</span>
+        </span>
+      </h1>
+      <div class="hero-copy">
+        <p>A Mosten une estratégia, engenharia, dados e inteligência artificial para criar soluções que aceleram negócios, impulsionam decisões e geram impacto real.</p>
+        <div class="hero-ctas">
+          <a class="primary" href="#contato">Fale com nossos especialistas</a>
+          <a class="outline" href="#cases">Ver os cases</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clientes">
+    <h2>Confiança que se constrói entrega após entrega<span class="dot">.</span></h2>
+    <p class="sub">Empresas que operam infraestrutura crítica escolhem a Mosten para sustentar decisão, dado e sistema no dia a dia.</p>
+    <div class="logo-marquee"><div class="logo-track dir-left">
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-sepetiba-tecon.png" alt="Sepetiba Tecon"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-penske.png" alt="Penske"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-santos-brasil.png" alt="Santos Brasil"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-ecoporto-santos.png" alt="Ecoporto Santos"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-1.png" alt="ABA Infraestrutura"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-vopak.png" alt="Vopak"></div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sepetiba-tecon.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-penske.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-santos-brasil.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-ecoporto-santos.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-1.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-vopak.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sepetiba-tecon.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-penske.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-santos-brasil.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-ecoporto-santos.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-1.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-vopak.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sepetiba-tecon.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-penske.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-santos-brasil.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-ecoporto-santos.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-1.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-vopak.png" alt=""></div>
+      </div>
+    </div></div>
+    <div class="logo-marquee"><div class="logo-track dir-right">
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-g-pierotti.png" alt="G Pierotti"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-dp-world.png" alt="DP World"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-bridgestone.png" alt="Bridgestone"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-global-ship.png" alt="Global Ship"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-jadlog.png" alt="Jadlog"></div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-g-pierotti.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-dp-world.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bridgestone.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-global-ship.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-jadlog.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-g-pierotti.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-dp-world.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bridgestone.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-global-ship.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-jadlog.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-g-pierotti.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-dp-world.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bridgestone.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-global-ship.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-jadlog.png" alt=""></div>
+      </div>
+    </div></div>
+    <div class="logo-marquee"><div class="logo-track dir-left">      <div class="logo-chip"><img src="assets/clientes-logos/logo-euromarco.png" alt="Euromarco"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-concais.png" alt="Concais"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-bandeirantes.png" alt="Bandeirantes"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-2.png" alt="ABA Infraestrutura"></div>
+      <div class="logo-chip"><img src="assets/clientes-logos/logo-sinqia.png" alt="Sinqia"></div>
+      <div class="logo-dup" aria-hidden="true">        <div class="logo-chip"><img src="assets/clientes-logos/logo-euromarco.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-concais.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bandeirantes.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-2.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sinqia.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">        <div class="logo-chip"><img src="assets/clientes-logos/logo-euromarco.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-concais.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bandeirantes.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-2.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sinqia.png" alt=""></div>
+      </div>
+      <div class="logo-dup" aria-hidden="true">        <div class="logo-chip"><img src="assets/clientes-logos/logo-euromarco.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-concais.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-bandeirantes.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-aba-infraestrutura-2.png" alt=""></div>
+        <div class="logo-chip"><img src="assets/clientes-logos/logo-sinqia.png" alt=""></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="visao" class="visao reveal">
+    <div class="visao-inner">
+      <div class="visao-label">NOSSA VISÃO</div>
+
+      <h2 class="visao-desktop-only">Tecnologia sozinha não decide o futuro de uma empresa. Quem decide é a leitura de negócio por trás dela.<span class="dim"> </span><span class="accent">É por isso que cada squad Mosten entende o setor do cliente antes de tocar em uma linha de código.</span></h2>
+      <p class="desc visao-desktop-only">Sem esse contexto, tecnologia vira custo, não resultado. Com ele, estratégia, dados, engenharia e IA passam a puxar na mesma direção.</p>
+
+      <h2 class="visao-mobile-only">Tecnologia sozinha não decide o futuro de uma empresa. Quem decide é a leitura de negócio por trás dela.</h2>
+      <p class="desc visao-mobile-only visao-mobile-accent">É por isso que cada squad Mosten entende o setor do cliente antes de tocar em uma linha de código.</p>
+      <p class="desc visao-mobile-only">Sem esse contexto, tecnologia vira custo, não resultado. Com ele, estratégia, dados, engenharia e IA passam a puxar na mesma direção.</p>
+
+      <a class="pill-btn solid-dark cta" href="#visao">Conheça nossa história →</a>
+    </div>
+  </section>
+
+  <section class="impacto reveal">
+    <div class="impacto-inner">
+      <div class="impacto-head">
+        <div class="eyebrow">IA EM NÚMEROS</div>
+        <h2>A IA deixou de ser tendência<span class="dot">.</span></h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card purple tile-big">
+          <div>
+            <p class="stat-number" data-count-to="88" data-suffix="%">88%</p>
+            <p class="stat-desc">das organizações já usam IA em pelo menos uma função</p>
+          </div>
+          <p class="stat-source">Fonte: McKinsey, The State of AI in 2025</p>
+        </div>
+        <div class="stat-card orange tile-2">
+          <div>
+            <p class="stat-number" data-count-to="39" data-suffix="%">39%</p>
+            <p class="stat-desc">das empresas conseguem apontar impacto de IA no EBIT</p>
+          </div>
+          <p class="stat-source">Fonte: McKinsey, The State of AI in 2025</p>
+        </div>
+        <div class="stat-card pastel tile-3">
+          <div>
+            <p class="stat-number" data-count-to="50" data-suffix="%">50%</p>
+            <p class="stat-desc">das grandes empresas brasileiras utilizam IA</p>
+          </div>
+          <p class="stat-source">Fonte: TIC Empresas 2025</p>
+        </div>
+        <div class="stat-card vivid tile-4">
+          <p class="stat-number" data-count-to="33" data-suffix="%">33%</p>
+          <div class="stat-body">
+            <p class="stat-desc">das empresas brasileiras planejam ampliar os investimentos em IA</p>
+            <p class="stat-source">Fonte: Pulse of Change 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-first reveal">
+    <div class="ai-panel">
+      <div class="glow"></div>
+      <div class="ai-panel-content">
+        <div class="eyebrow">AI FIRST, DE VERDADE</div>
+        <h2>Usamos IA nos nossos processos antes de vender qualquer projeto de IA para cliente.</h2>
+        <p class="desc">Da forma como escrevemos código à forma como montamos uma proposta comercial, a IA já está no meio do processo. Quem sente isso primeiro é o cliente, na velocidade da entrega.</p>
+        <div class="ai-features">
+          <div><span>IA aplicada ao negócio</span><p>Entra no projeto quando reduz custo ou tempo de decisão, não quando é só assunto do momento.</p></div>
+          <div><span>Engenharia com IA</span><p>Copiloto de código no dia a dia do time, sempre revisado por gente sênior antes de qualquer deploy.</p></div>
+          <div><span>Produtos que aprendem</span><p>Plataformas próprias ficam mais precisas com o uso, não só com atualização manual.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucoes" class="capacidades reveal">
+    <div class="cap-inner">
+      <div class="eyebrow">COMO GERAMOS VALOR</div>
+      <h2>Da estratégia à entrega, sem cortar o fio no meio do caminho.</h2>
+      <p class="desc">Atuamos com consultoria, projetos, squads e alocação de especialistas, combinando visão de negócio e profundidade técnica no modelo mais adequado a cada desafio.</p>
+      <div class="cap-rows">
+        <div class="cap-row">
+          <div class="cap-num">01</div>
+          <div class="cap-body">
+            <h3 class="cap-title">Inteligência Artificial e Automação</h3>
+            <p class="cap-desc">IA entra onde reduz tempo de decisão e tira trabalho manual repetitivo de gente que devia estar pensando em outra coisa.</p>
+            <div class="cap-tags"><span>IA generativa</span><span>Agentes</span><span>Automação</span></div>
+          </div>
+        </div>
+        <div class="cap-row alt">
+          <div class="cap-body">
+            <h3 class="cap-title">Dados e Analytics</h3>
+            <p class="cap-desc">Dado espalhado em sistema separado não sustenta decisão nenhuma. Organizamos isso numa base única que aguenta pergunta difícil, não só dashboard bonito.</p>
+            <div class="cap-tags"><span>Data engineering</span><span>Governança</span><span>BI</span></div>
+          </div>
+          <div class="cap-num">02</div>
+        </div>
+        <div class="cap-row">
+          <div class="cap-num">03</div>
+          <div class="cap-body">
+            <h3 class="cap-title">Engenharia e Produtos Digitais</h3>
+            <p class="cap-desc">Construímos e modernizamos os sistemas que seguram a operação no dia a dia, do zero ou em cima do que já existe.</p>
+            <div class="cap-tags"><span>Software</span><span>Cloud</span><span>UX/UI</span></div>
+          </div>
+        </div>
+        <div class="cap-row alt">
+          <div class="cap-body">
+            <h3 class="cap-title">Consultoria e Times Especializados</h3>
+            <p class="cap-desc">Estruturamos consultoria, projetos, squads e alocação de especialistas de acordo com a necessidade do negócio, com continuidade, contexto e responsabilidade pela entrega.</p>
+            <div class="cap-tags"><span>Squads</span><span>Projetos</span><span>Especialistas</span></div>
+          </div>
+          <div class="cap-num">04</div>
+        </div>
+      </div>
+      <div class="cap-cta"><a class="pill-btn solid-purple" href="#solucoes">Conheça nossos serviços →</a></div>
+    </div>
+  </section>
+
+  <section id="cases" class="cases reveal">
+    <div class="cases-inner">
+      <div class="eyebrow">CASES</div>
+      <h2>Quatro operações. Quatro problemas concretos resolvidos.</h2>
+      <p class="desc">Cada case abaixo tem um problema, uma decisão de arquitetura e um número de resultado.</p>
+      <div class="cases-grid">
+        <div class="cases-col">
+          <div class="case-card">
+            <img class="case-img tall" src="assets/case-dsv.png" alt="Caminhão DSV">
+            <div class="case-client">DSV</div>
+            <div class="case-title">Dados críticos organizados em uma torre de controle usada todos os dias.</div>
+            <p class="case-desc">BI operacional e financeiro com visão centralizada da operação.</p>
+            <div class="case-result">Adoção diária</div>
+          </div>
+          <div class="case-card row">
+            <div class="case-img-wrap"><img class="case-img" src="assets/case-ogmo-santos.png" alt="Navio porta-contêineres" style="height:100%;margin:0;"></div>
+            <div class="case-card-text">
+              <div class="case-client">OGMO Santos</div>
+              <div class="case-title">De um relatório de 250 páginas para um portal que a diretoria abre todo dia.</div>
+              <p class="case-desc">Arquitetura integrada, governança de indicadores e portal sob medida.</p>
+              <div class="case-result">Decisão 80% mais rápida</div>
+            </div>
+          </div>
+        </div>
+        <div class="cases-col">
+          <div class="case-card">
+            <img class="case-img" src="assets/case-copersucar.png" alt="Vista aérea de embarcação" style="border-radius:6px;">
+            <div class="case-client">Copersucar</div>
+            <div class="case-title">Um plano diretor para decidir o que a operação precisa antes de crescer, não depois.</div>
+            <p class="case-desc">Plano diretor, arquitetura futura, dados, sistemas e automação.</p>
+            <div class="case-result">Roadmap de transformação</div>
+          </div>
+          <div class="case-card">
+            <img class="case-img" src="assets/case-bridgestone.png" alt="Unidade Bridgestone" style="border-radius:6px;">
+            <div class="case-client">Bridgestone</div>
+            <div class="case-title">De minutos para milissegundos em uma etapa crítica da produção.</div>
+            <p class="case-desc">Engenharia de software, integração, automação e alta performance.</p>
+            <div class="case-result">Resposta em 60 ms</div>
+          </div>
+        </div>
+      </div>
+      <div class="cases-cta"><a class="pill-btn solid-purple" href="#cases">Veja nossos cases →</a></div>
+    </div>
+  </section>
+
+  <section class="depoimentos reveal">
+    <div class="dep-inner">
+      <div class="dep-head">
+        <div class="eyebrow">DEPOIMENTOS</div>
+        <h2>O que falam de nós</h2>
+      </div>
+      <div class="testimonial" id="testimonial">
+        <div class="dep-profile">
+          <img class="dep-avatar" id="depAvatar" src="assets/avatar-raquel.svg" alt="Raquel Almeida">
+          <div>
+            <div class="dep-name" id="depName">Raquel Almeida - Consultoria Digital</div>
+            <div class="dep-role" id="depRole">Gerente de T.I — Grupo ABA Infra</div>
+          </div>
+        </div>
+        <p class="dep-quote" id="depQuote">"A Mosten tem feito um trabalho incrível, colaboradores que vestem a camisa da sua empresa, no intuito de trazer a solução mais aderente aos seus processos. Obrigada Mosten!"</p>
+      </div>
+      <div class="dep-buttons">
+        <button aria-label="Depoimento anterior" id="depPrev"><svg viewBox="0 0 20 20" fill="none"><path d="M12.5 5L7.5 10L12.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button aria-label="Próximo depoimento" id="depNext"><svg viewBox="0 0 20 20" fill="none"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights" class="insights reveal">
+    <div class="insights-inner">
+      <div class="eyebrow">INSIGHTS</div>
+      <h2>Acompanhe as últimas tendências da área</h2>
+      <p class="desc">Insights, estratégias e novidades para impulsionar sua empresa no mundo digital.</p>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <img src="assets/insight-tecnologia.png" alt="LGPD na Saúde">
+          <div class="insight-label" style="color:var(--orange-mid);">Tecnologia</div>
+          <div class="insight-title">LGPD na Saúde: Como Proteger Dados de Pacientes e Adequar a Operação</div>
+        </div>
+        <div class="insight-card">
+          <img src="assets/insight-ia.png" alt="Rastreamento de Frota">
+          <div class="insight-label" style="color:var(--purple-primary);">Inteligência Artificial</div>
+          <div class="insight-title">Rastreamento de Frota: Como Reduzir Custo e Aumentar a Segurança da Operação</div>
+        </div>
+        <div class="insight-card">
+          <img src="assets/insight-logistica.png" alt="Tecnologia Portuária">
+          <div class="insight-label" style="color:var(--purple-vivid);">Logística</div>
+          <div class="insight-title">Tecnologia Portuária: Como a digitalização acelera a eficiência dos portos.</div>
+        </div>
+      </div>
+      <div class="insights-cta"><a class="pill-btn solid-dark" href="#">Ver mais insights →</a></div>
+    </div>
+  </section>
+
+  <section id="contato" class="cta-final reveal">
+    <div class="cta-inner">
+      <div class="eyebrow">VAMOS CONSTRUIR O PRÓXIMO PASSO</div>
+      <h2>Tecnologia só importa quando sai do slide e entra na operação.</h2>
+      <p class="desc">Conte para a Mosten o seu próximo desafio.</p>
+      <div class="cta-actions">
+        <a class="pill-btn solid-dark" href="mailto:contato@mosten.com">Fale com nosso time</a>
+        <a class="pill-btn outline-light" href="#solucoes">Veja o que fazemos</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path fill="currentColor" d="M1250.14,629.78c-13.79,0-23.41-2.81-28.87-8.43-5.48-5.62-8.21-14.41-8.21-26.4v-74.01c0-2.54,2.06-4.6,4.6-4.6h61.06c2.31,0,4.18-1.87,4.18-4.18v-42.13c0-2.31-1.87-4.18-4.18-4.18h-62.44c-2.56,0-4.62-2.09-4.6-4.65l.59-59.69c.03-2.57-2.59-4.33-4.96-3.34l-48.68,20.39c-1.34.56-2.2,1.87-2.2,3.32l.18,39.35c.01,2.55-2.05,4.62-4.6,4.62h-19.47c-2.31,0-4.18,1.87-4.18,4.18v42.13c0,2.31,1.87,4.18,4.18,4.18h18.84c2.54,0,4.6,2.06,4.6,4.6v82.56c0,16.63,2.47,30.64,7.41,42.02,4.94,11.39,13,19.89,24.15,25.51,11.16,5.61,26.1,8.42,44.83,8.42,11.09,0,21.47-.97,31.12-2.92,9.67-1.95,18.24-4.64,25.73-8.08l4.95-48.1c-6.29,2.85-13.19,5.13-20.67,6.86-7.5,1.73-15.28,2.59-23.37,2.59Z"></path>
+        <path fill="currentColor" d="M862.34,479.16c-23.15-19.48-56.67-29.22-100.56-29.22s-77.23,9.74-100.45,29.22c-23.23,19.48-34.83,47.04-34.83,82.69v9.89c0,35.81,11.57,63.33,34.72,82.59,23.15,19.24,56.67,28.87,100.56,28.87s77.41-9.63,100.56-28.87c23.15-19.26,34.72-46.78,34.72-82.59v-9.89c0-35.65-11.57-63.21-34.72-82.69ZM821.33,572.41c0,16.93-5.25,29.97-15.73,39.11-10.49,9.14-25.09,13.7-43.82,13.7s-33.48-4.56-43.82-13.7c-10.34-9.14-15.51-22.17-15.51-39.11v-11.23c0-17.08,5.17-30.19,15.51-39.33,10.34-9.13,24.86-13.7,43.59-13.7s33.74,4.58,44.16,13.7c10.41,9.14,15.62,22.25,15.62,39.33v11.23Z"></path>
+        <path fill="currentColor" d="M533.94,458.23h-72.43l-36.07,15.35v-.82c0-8.03-6.51-14.53-14.53-14.53h-117.38l-37.09,15.78v-9.14c0-3.52-3.58-5.9-6.83-4.55l-65.04,27.12c-1.84.77-3.03,2.56-3.03,4.55v183.07h74.9v-129.6l81.72-34.91c6.12-2.62,12.93,1.88,12.93,8.53v155.98h74.35v-130.03l80.71-34.48c6.12-2.62,12.92,1.88,12.92,8.53v155.98h74.35v-157.33c0-32.85-26.64-59.49-59.49-59.49Z"></path>
+        <path fill="currentColor" d="M1689.32,459.52h-58.89l-36.81,15.67v-9.64c0-3.67-3.73-6.17-7.13-4.76l-42.05,17.39c-1.93.8-3.19,2.68-3.19,4.76v193.4h52.37v-149.89l82.16-35.1c8.71-3.72,18.38,2.67,18.38,12.13v172.85h45.07v-166.91c0-27.57-22.34-49.91-49.91-49.91Z"></path>
+        <path fill="currentColor" d="M1078.06,557.02c-11.31-5.17-26.18-9.77-44.61-13.82-12.44-2.85-22.02-5.51-28.77-7.98-6.74-2.46-11.35-5.12-13.82-7.97-2.48-2.84-3.71-6.29-3.71-10.34v-.9c0-3.74,1.08-6.89,3.25-9.44,2.17-2.55,5.95-4.49,11.35-5.84,5.39-1.35,12.65-2.02,21.8-2.02,14.83,0,28.83,1.61,42.02,4.83,7.43,1.82,14.28,3.97,20.79,6.32,2.57.93,5.24-.93,5.24-3.66v-39.54c0-1.58-.89-3.02-2.35-3.64-7.75-3.29-16.79-6.24-27.27-8.8-13.48-3.3-28.84-4.95-46.07-4.95-29.66,0-52.1,5.37-67.3,16.07-15.21,10.71-22.81,26.78-22.81,48.21v1.8c0,11.99,2.32,22.22,6.97,30.68,4.64,8.46,12.32,15.65,23.03,21.57,10.71,5.92,25.28,10.98,43.7,15.17,12.88,3,22.89,5.66,30,7.98,7.11,2.32,12.06,4.94,14.83,7.86,2.77,2.92,4.16,6.64,4.16,11.13v1.12c0,6.59-2.96,11.5-8.88,14.72-5.92,3.22-15.77,4.84-29.55,4.84-16.33,0-31.43-1.95-45.28-5.84-9.6-2.7-18.47-5.71-26.83-8.93-2.57-.99-5.28.88-5.28,3.64v43.39c0,1.63.93,3.09,2.44,3.68,9.18,3.6,20.07,6.86,32.71,9.78,13.93,3.23,29.66,4.84,47.19,4.84,32.36,0,56.4-5.73,72.14-17.19,15.73-11.46,23.59-28.8,23.59-52.02v-2.25c0-13.48-2.62-24.3-7.86-32.46-5.25-8.17-13.52-14.83-24.83-20Z"></path>
+        <path fill="currentColor" d="M1472.21,461.06c-14.46-7.71-32.47-11.56-54.05-11.56-32.06,0-56.44,8.64-73.14,25.95-16.71,17.31-25.06,41.84-25.06,73.6v32.36c0,32.21,8.95,56.85,26.85,73.92,17.9,17.08,45.06,25.63,81.46,25.63,16.18,0,30.94-1.72,44.27-5.17,12.95-3.34,29.76-7.77,39.6-13.24v-39.51c-9.58,4.52-25,8.37-35.55,11.17-12.44,3.3-25.61,4.94-39.55,4.94-12.44,0-22.96-1.23-31.58-3.7-8.62-2.48-15.54-6.03-20.78-10.67-5.25-4.65-9.03-10.07-11.35-16.29-2.32-6.22-3.48-13.15-3.48-20.79v-3.37h143.14c.75-4.95,1.35-10.11,1.8-15.51.45-5.4.67-10.71.67-15.96v-8.08c0-19.63-3.59-36.55-10.78-50.78-7.19-14.23-18.02-25.21-32.47-32.93ZM1464.19,542.11l-91.55.84c-1.77.02-3.25-1.51-3.2-3.28.49-15.62,4.47-27.75,11.97-36.36,8.01-9.21,20.26-13.82,36.74-13.82,11.09,0,20.26,2.06,27.53,6.18,7.27,4.12,12.7,10.07,16.29,17.86,3.25,7.03,5.03,15.46,5.35,25.3.06,1.74-1.39,3.25-3.13,3.26Z"></path>
+      </svg>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="LinkedIn">IN</a>
+      </div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-contact">
+        <div class="lines">
+          <span>+55 13 4101-0010</span>
+          <span>comunicacao@mosten.com.br</span>
+          <span>comercial@mosten.com.br</span>
+        </div>
+        <div class="rule"></div>
+        <div class="footer-legal">
+          <a href="#">Programa de Compliance</a>
+          <a href="#">Política de Privacidade</a>
+          <a href="#">Segurança da Informação</a>
+          <a href="#">Política de Cookies</a>
+        </div>
+        <div class="footer-copy">© 2026 Mosten. Todos direitos reservados.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#top">Home</a>
+        <a href="#visao">Conheça a Mosten</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#cases">Cases</a>
+        <a href="#">Blog</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-news">
+        <p class="title">Inscreva-se em nossa Newsletter</p>
+        <p class="desc">Receba conteúdos exclusivos sobre tendências de mercado e insights estratégicos direto no seu e-mail.</p>
+        <form onsubmit="return false;">
+          <input type="email" placeholder="Coloque seu melhor e-mail" required>
+          <button type="submit">Fale com a Mosten</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var numbers = document.querySelectorAll('.stat-number[data-count-to]');
+  if (!numbers.length) return;
+
+  function easeOutExpo(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+  function animateCount(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+
+    function step(timestamp){
+      if (start === null) start = timestamp;
+      var progress = Math.min((timestamp - start) / duration, 1);
+      var eased = easeOutExpo(progress);
+      var current = Math.round(target * eased);
+      el.textContent = current + suffix;
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target + suffix;
+      }
+    }
+    el.textContent = '0' + suffix;
+    requestAnimationFrame(step);
+  }
+
+  var countIo = new IntersectionObserver(function(entries, observer){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  numbers.forEach(function(el){ countIo.observe(el); });
+})();
+
+(function(){
+  var testimonials = [
+    {
+      name: 'Raquel Almeida - Consultoria Digital',
+      role: 'Gerente de T.I — Grupo ABA Infra',
+      quote: '"A Mosten tem feito um trabalho incrível, colaboradores que vestem a camisa da sua empresa, no intuito de trazer a solução mais aderente aos seus processos. Obrigada Mosten!"',
+      avatar: 'assets/avatar-raquel.svg'
+    },
+    {
+      name: 'Dennys Kerr Sanches - Soluções Digitais',
+      role: 'Gerente de T.I — Ecoporto',
+      quote: '"Estamos plenamente satisfeitos com a parceira de longa data que mantemos com a Mosten. A agilidade no atendimento, a qualidade das entregas e dos profissionais são os principais diferenciais da empresa."',
+      avatar: 'assets/avatar-dennys.svg'
+    },
+    {
+      name: 'Peterson Luiz Dias - Inovação Tecnológica',
+      role: 'Gerente de T.I — AgroGalaxy',
+      quote: '"Tínhamos demandas de tecnologia de todas as formas. A Mosten nos apoiou da arquitetura e infraestrutura cloud ao desenvolvimento mobile e às integrações."',
+      avatar: 'assets/avatar-peterson.svg'
+    }
+  ];
+  var current = 0;
+  var testimonial = document.getElementById('testimonial');
+  var avatarEl = document.getElementById('depAvatar');
+  var nameEl = document.getElementById('depName');
+  var roleEl = document.getElementById('depRole');
+  var quoteEl = document.getElementById('depQuote');
+  var prevBtn = document.getElementById('depPrev');
+  var nextBtn = document.getElementById('depNext');
+  if (!testimonial || !prevBtn || !nextBtn) return;
+
+  function render(index){
+    testimonial.classList.add('is-switching');
+    setTimeout(function(){
+      nameEl.textContent = testimonials[index].name;
+      roleEl.textContent = testimonials[index].role;
+      quoteEl.textContent = testimonials[index].quote;
+      avatarEl.src = testimonials[index].avatar;
+      avatarEl.alt = testimonials[index].name.split(' - ')[0];
+      testimonial.classList.remove('is-switching');
+    }, 200);
+  }
+
+  prevBtn.addEventListener('click', function(){
+    current = (current - 1 + testimonials.length) % testimonials.length;
+    render(current);
+  });
+  nextBtn.addEventListener('click', function(){
+    current = (current + 1) % testimonials.length;
+    render(current);
+  });
+})();
+</script>
+</body>
+</html>
