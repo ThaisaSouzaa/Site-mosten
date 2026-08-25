@@ -132,6 +132,24 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
 /* ---- eyebrow ---- */
 .mst-eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;line-height:1.35;letter-spacing:.08em;text-transform:uppercase;}
 
+/* ---- header: menu mobile (busca + hambúrguer) ---- */
+.mst-mobile-nav-btns{display:none;align-items:center;gap:4px;}
+.mst-mobile-nav-panel{
+  display:none;flex-direction:column;gap:4px;
+  position:fixed;top:92px;left:16px;right:16px;z-index:49;
+  padding:16px;border-radius:20px;backdrop-filter:blur(16px);
+  background:var(--header-bg);border:1px solid var(--header-border);box-shadow:0 12px 32px rgba(0,0,0,.28);
+  font-size:15px;color:var(--muted-4);
+}
+.mst-mobile-nav-panel.open{display:flex;}
+.mst-mobile-nav-panel a,.mst-mobile-nav-panel span{padding:12px 8px;border-bottom:1px solid var(--border-soft);}
+.mst-mobile-nav-panel a:last-of-type{border-bottom:none;}
+.mst-mobile-nav-panel span{color:var(--text);}
+@media (max-width:768px){
+  #mainNav{display:none !important;}
+  .mst-mobile-nav-btns{display:flex;}
+}
+
 /* ---- container padrão: espelha o .ms-shell do site (max-width:1240px, gutter lateral de 100px) ---- */
 .mst-shell{max-width:1240px;margin:0 auto;width:calc(100% - 200px);}
 @media (max-width:900px){.mst-shell{width:calc(100% - 80px);}}
@@ -196,12 +214,18 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
 .mst-fronts-photo .mst-fronts-photo-inner{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
 .mst-fronts-photo .mst-fronts-photo-inner.active{opacity:1;}
 .mst-fronts-photo .mst-fronts-photo-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+.mst-fronts-item-mobile-photo{display:none;}
 @media (max-width:900px){
   .mst-fronts-pin-wrapper{height:300vh;}
   .mst-fronts-pin-inner{padding:24px;}
   .mst-fronts-card{padding:32px 24px;border-radius:20px;max-height:100%;overflow-y:auto;}
   .mst-fronts-body{flex-direction:column;gap:24px;margin-top:32px;}
   .mst-fronts-item-wrap{padding:14px 0;}
+  .mst-fronts-photo{display:none;}
+  .mst-fronts-item-wrap.active .mst-fronts-item-mobile-photo{
+    display:block;aspect-ratio:638/446;border-radius:20px;overflow:hidden;margin-bottom:14px;
+  }
+  .mst-fronts-item-mobile-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 }
 @media (prefers-reduced-motion:reduce){
   .mst-fronts-photo-inner{transition:none;}
@@ -309,7 +333,7 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
         <path fill="currentColor" d="M1472.21,461.06c-14.46-7.71-32.47-11.56-54.05-11.56-32.06,0-56.44,8.64-73.14,25.95-16.71,17.31-25.06,41.84-25.06,73.6v32.36c0,32.21,8.95,56.85,26.85,73.92,17.9,17.08,45.06,25.63,81.46,25.63,16.18,0,30.94-1.72,44.27-5.17,12.95-3.34,29.76-7.77,39.6-13.24v-39.51c-9.58,4.52-25,8.37-35.55,11.17-12.44,3.3-25.61,4.94-39.55,4.94-12.44,0-22.96-1.23-31.58-3.7-8.62-2.48-15.54-6.03-20.78-10.67-5.25-4.65-9.03-10.07-11.35-16.29-2.32-6.22-3.48-13.15-3.48-20.79v-3.37h143.14c.75-4.95,1.35-10.11,1.8-15.51.45-5.4.67-10.71.67-15.96v-8.08c0-19.63-3.59-36.55-10.78-50.78-7.19-14.23-18.02-25.21-32.47-32.93ZM1464.19,542.11l-91.55.84c-1.77.02-3.25-1.51-3.2-3.28.49-15.62,4.47-27.75,11.97-36.36,8.01-9.21,20.26-13.82,36.74-13.82,11.09,0,20.26,2.06,27.53,6.18,7.27,4.12,12.7,10.07,16.29,17.86,3.25,7.03,5.03,15.46,5.35,25.3.06,1.74-1.39,3.25-3.13,3.26Z"></path>
       </svg>
     </a>
-    <nav style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:400;color:var(--muted-4);">
+    <nav id="mainNav" style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:400;color:var(--muted-4);">
       <a href="index.html">Início</a>
       <a href="Empresa - Standalone.html">Empresa</a>
       <span style="color:var(--text);">O que fazemos</span>
@@ -319,8 +343,27 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
       <button id="themeToggle" aria-label="Alternar para tema claro" aria-pressed="false" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--border-pill);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;line-height:1;padding:0;">◐</button>
       <a href="#form" style="padding:10px 20px;border-radius:100px;border:1px solid var(--border-pill);color:var(--text);">Fale com a Mosten</a>
     </nav>
+    <div class="mst-mobile-nav-btns">
+      <button type="button" aria-label="Buscar" style="width:36px;height:36px;border:none;background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;font-size:19px;">
+        <i class="ph-bold ph-magnifying-glass" aria-hidden="true"></i>
+      </button>
+      <button type="button" id="mobileNavToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNavPanel" style="width:36px;height:36px;border:none;background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;font-size:19px;">
+        <i class="ph-bold ph-list" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
 </header>
+
+<div id="mobileNavPanel" class="mst-mobile-nav-panel">
+  <a href="index.html">Início</a>
+  <a href="Empresa - Standalone.html">Empresa</a>
+  <span style="color:var(--text);">O que fazemos</span>
+  <a href="index.html#cases">Cases</a>
+  <a href="Carreiras - Standalone.html">Carreiras</a>
+  <a href="#">Insights</a>
+  <button id="themeToggleMobile" aria-label="Alternar tema" aria-pressed="false" style="width:100%;min-height:44px;border-radius:12px;border:1px solid var(--border-pill);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;font-size:14px;">◐ Alternar tema</button>
+  <a href="#form" style="display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:100px;border:1px solid var(--border-pill);color:var(--text);">Fale com a Mosten</a>
+</div>
 
 <main id="main-content">
   <!-- HERO -->
@@ -445,18 +488,22 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
       <div class="mst-fronts-body">
         <div class="mst-fronts-list" id="frontsList">
           <div class="mst-fronts-item-wrap active" data-target="processos">
+            <div class="mst-fronts-item-mobile-photo"><img src="assets/frentes-processos.jpg" alt="Equipe em reunião de planejamento diante de um quadro branco, mapeando um processo" loading="lazy"></div>
             <button type="button" class="mst-fronts-item">Consultoria em processos e operações</button>
             <p class="mst-fronts-item-desc">Análise de fluxos, responsabilidades, controles e pontos de decisão para identificar gargalos, retrabalho e falhas de governança. A partir do diagnóstico, estruturamos processos e modelos operacionais mais eficientes.</p>
           </div>
           <div class="mst-fronts-item-wrap" data-target="software">
+            <div class="mst-fronts-item-mobile-photo"><img src="assets/frentes-software.jpg" alt="Tela de computador exibindo um pipeline de integração e implantação de software" loading="lazy"></div>
             <button type="button" class="mst-fronts-item">Consultoria em software, arquitetura e integrações</button>
             <p class="mst-fronts-item-desc">Avaliação de sistemas e aplicações, levantamento de requisitos, desenho de solução, arquitetura, modernização de sistemas legados e integração entre plataformas. O foco é definir uma estrutura técnica coerente com a operação e com a evolução do negócio.</p>
           </div>
           <div class="mst-fronts-item-wrap" data-target="dados">
+            <div class="mst-fronts-item-mobile-photo"><img src="assets/frentes-dados.jpg" alt="Analista revisando painéis de dados e indicadores em múltiplos monitores" loading="lazy"></div>
             <button type="button" class="mst-fronts-item">Consultoria em dados, analytics e inteligência artificial</button>
             <p class="mst-fronts-item-desc">Organização de dados, definição de indicadores, arquitetura e governança, analytics e avaliação de casos de uso de inteligência artificial. O objetivo é criar bases confiáveis para análise, decisão e aplicação de IA.</p>
           </div>
           <div class="mst-fronts-item-wrap" data-target="seguranca">
+            <div class="mst-fronts-item-mobile-photo"><img src="assets/frentes-seguranca.jpg" alt="Painel de rede com cabos organizados, representando infraestrutura e governança de TI" loading="lazy"></div>
             <button type="button" class="mst-fronts-item">Consultoria em segurança, governança e infraestrutura</button>
             <p class="mst-fronts-item-desc">Avaliação de riscos, acessos, conformidade, nuvem, continuidade e observabilidade. A atuação apoia a definição de padrões e controles sem comprometer a operação.</p>
           </div>
@@ -633,13 +680,38 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
 
 <script>
 (function(){
-  var btn = document.getElementById('themeToggle');
-  btn.addEventListener('click', function(){
+  function toggleTheme(){
     var light = document.documentElement.classList.toggle('light');
-    btn.textContent = light ? '◑' : '◐';
-    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
-    btn.setAttribute('aria-label', light ? 'Alternar para tema escuro' : 'Alternar para tema claro');
-  });
+    [themeBtn, themeBtnMobile].forEach(function(b){
+      if (!b) return;
+      b.setAttribute('aria-pressed', light ? 'true' : 'false');
+      b.setAttribute('aria-label', light ? 'Alternar para tema escuro' : 'Alternar para tema claro');
+    });
+    if (themeBtn) themeBtn.textContent = light ? '◑' : '◐';
+    if (themeBtnMobile) themeBtnMobile.textContent = (light ? '◑' : '◐') + ' Alternar tema';
+  }
+  var themeBtn = document.getElementById('themeToggle');
+  var themeBtnMobile = document.getElementById('themeToggleMobile');
+  themeBtn.addEventListener('click', toggleTheme);
+  if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+
+  var navToggle = document.getElementById('mobileNavToggle');
+  var navPanel = document.getElementById('mobileNavPanel');
+  if (navToggle && navPanel) {
+    navToggle.addEventListener('click', function(){
+      var open = navPanel.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      navToggle.querySelector('i').className = open ? 'ph-bold ph-x' : 'ph-bold ph-list';
+    });
+    navPanel.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navPanel.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.querySelector('i').className = 'ph-bold ph-list';
+      });
+    });
+  }
 
   var form = document.getElementById('consultoriaForm');
   form.addEventListener('submit', function(e){
