@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultoria em Tecnologia, Dados e IA para Enterprise | Mosten</title>
+<meta name="description" content="Consultoria em tecnologia, dados e IA para operações enterprise. A Mosten entende o negócio antes de indicar qualquer ferramenta ou solução.">
+<link rel="canonical" href="https://mosten.com/consultoria/">
+<meta property="og:title" content="Consultoria em Tecnologia, Dados e IA | Mosten">
+<meta property="og:description" content="Diagnóstico de processos, software, dados e segurança para levar iniciativas de tecnologia à operação real.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mosten.com/consultoria/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Consultoria em tecnologia, dados e inteligência artificial",
+  "provider": {
+    "@type": "Organization",
+    "name": "Mosten",
+    "url": "https://mosten.com"
+  },
+  "areaServed": "BR",
+  "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Empresas enterprise"
+  },
+  "url": "https://mosten.com/consultoria/",
+  "description": "Consultoria em tecnologia, dados e IA para operações enterprise. A Mosten entende o negócio antes de indicar qualquer ferramenta ou solução."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "O que é Engenharia Aplicada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "É o modelo de atuação da Mosten que aplica investigação de negócio antes da construção de qualquer solução técnica, inspirado no conceito de Forward Deployed Engineer e formalizado no Método Mosten."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Em que a consultoria da Mosten é diferente de uma consultoria de TI tradicional?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Mosten entra no contexto real da operação do cliente antes de recomendar ferramenta ou fornecedor. O diagnóstico de negócio vem antes da escolha técnica, não depois."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A consultoria pode ser contratada para um projeto pontual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sim. O serviço atende desde o apoio a uma decisão específica até jornadas completas de diagnóstico, planejamento e acompanhamento de implementação."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais frentes a consultoria cobre?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Processos e operações; software, arquitetura e integrações; dados, analytics e inteligência artificial; e segurança, governança e infraestrutura — isoladas ou combinadas no mesmo diagnóstico."
+      }
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0A0A0A;--text:#F4F3EF;
+  --muted-1:#ABABAF;--muted-2:#9C9CA0;--muted-3:#77777C;--muted-4:#B0B0B4;
+  --border:rgba(255,255,255,.10);--border-soft:rgba(255,255,255,.08);--border-pill:rgba(255,255,255,.22);
+  --field-bg:rgba(97,44,181,.10);--field-border:rgba(97,44,181,.24);
+  --header-bg:rgba(28,28,30,.82);--header-border:rgba(255,255,255,.16);
+  --btn-primary-bg:#F4F3EF;--btn-primary-text:#0A0A0A;--accent-label:#B79BE8;
+  --first-bg:#1B0E33;
+  --focus-ring:#B79BE8;
+}
+html.light{
+  --bg:#F4F3EF;--text:#0A0A0A;
+  --muted-1:#55544D;--muted-2:#6B6A64;--muted-3:#86857E;--muted-4:#4A4940;
+  --border:rgba(10,10,10,.10);--border-soft:rgba(10,10,10,.08);--border-pill:rgba(10,10,10,.22);
+  --field-bg:rgba(97,44,181,.06);--field-border:rgba(97,44,181,.18);
+  --header-bg:rgba(244,243,239,.72);--header-border:rgba(10,10,10,.08);
+  --btn-primary-bg:#0A0A0A;--btn-primary-text:#F4F3EF;--accent-label:#7C3AED;
+  --first-bg:#3A1D6B;
+  --focus-ring:#612CB5;
+}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter Tight',ui-sans-serif,system-ui,sans-serif;overflow-x:hidden;transition:background-color .4s ease,color .4s ease;}
+a{color:inherit;text-decoration:none;}
+a:hover{opacity:.72;}
+::selection{background:#612CB5;color:#fff;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--focus-ring);outline-offset:2px;}
+.skip-link{
+  position:absolute;left:16px;top:-60px;z-index:1000;
+  background:var(--btn-primary-bg);color:var(--btn-primary-text);padding:12px 20px;border-radius:8px;
+  font-weight:600;transition:top .2s ease;
+}
+.skip-link:focus{top:16px;}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.3,1), transform .9s cubic-bezier(.2,.7,.3,1);}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+.mst-field{
+  width:100%;box-sizing:border-box;min-height:56px;border-radius:12px;
+  border:1px solid var(--field-border);background:var(--field-bg);
+  color:var(--text);font-size:15.5px;font-family:inherit;padding:0 20px;
+  transition:border-color .2s ease, background-color .4s ease;
+}
+textarea.mst-field{min-height:140px;padding:18px 20px;resize:vertical;line-height:1.5;}
+.mst-field::placeholder{color:var(--muted-3);}
+.mst-field:focus{outline:2px solid var(--focus-ring);outline-offset:2px;border-color:#612CB5;}
+.mst-select-wrap{position:relative;}
+select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:44px;cursor:pointer;}
+.mst-select-wrap::after{
+  content:'';position:absolute;right:20px;top:50%;width:9px;height:9px;
+  border-right:1.5px solid var(--muted-4);border-bottom:1.5px solid var(--muted-4);
+  transform:translateY(-70%) rotate(45deg);pointer-events:none;
+}
+.mst-submit{min-height:56px;border-radius:100px;border:none;background:#612CB5;color:#F4F3EF;font-size:16px;font-weight:500;font-family:inherit;cursor:pointer;transition:opacity .2s ease;}
+.mst-submit:hover{opacity:.85;}
+
+/* ---- eyebrow ---- */
+.mst-eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;line-height:1.35;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ---- container padrão: espelha o .ms-shell do site (max-width:1240px, gutter lateral de 100px) ---- */
+.mst-shell{max-width:1240px;margin:0 auto;width:calc(100% - 200px);}
+@media (max-width:900px){.mst-shell{width:calc(100% - 80px);}}
+@media (max-width:640px){.mst-shell{width:calc(100% - 48px);}}
+
+/* ---- título de seção padronizado (referência: H2 52px/400/1.02/-.028em) ---- */
+.mst-h2-std{font-size:clamp(28px,3.8vw,52px);line-height:1.05;letter-spacing:-.028em;font-weight:400;margin:0 0 24px;}
+
+/* ---- hero: centrado, com halos ---- */
+.mst-hero{
+  min-height:80vh;box-sizing:border-box;display:flex;align-items:center;justify-content:center;
+  padding:150px 0 90px;text-align:center;position:relative;overflow:hidden;
+}
+.mst-hero-halo-a{position:absolute;top:-140px;left:-100px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(97,44,181,.28),transparent 70%);pointer-events:none;}
+.mst-hero-halo-b{position:absolute;bottom:-160px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle at 40% 35%,rgba(97,44,181,.22),transparent 70%);pointer-events:none;}
+.mst-hero-title-wrap{position:relative;}
+.mst-hero-halo-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:900px;max-width:150vw;height:460px;
+  background:radial-gradient(ellipse at center,rgba(97,44,181,.4),transparent 70%);
+  pointer-events:none;z-index:-1;
+}
+.mst-h1-huge{font-size:clamp(34px,4.8vw,58px);line-height:1.18;letter-spacing:-.03em;font-weight:400;margin:0 0 28px;}
+.mst-rotate-word{display:inline-block;color:var(--accent-label);transition:opacity .35s ease, transform .35s ease;}
+@media (prefers-reduced-motion:reduce){
+  .mst-rotate-word{transition:none;}
+}
+
+/* ---- frentes de atuação: seção fixa (pin) até os 4 itens serem percorridos ---- */
+.mst-fronts-pin-wrapper{position:relative;height:400vh;}
+.mst-fronts-pin-inner{
+  position:sticky;top:0;height:100vh;display:flex;align-items:center;
+  padding:70px 40px;box-sizing:border-box;overflow:hidden;
+}
+.mst-fronts-card{max-width:1400px;width:100%;margin:0 auto;background:#F4F3EF;border-radius:32px;padding:50px;}
+.mst-fronts-btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+  padding:16px 26px;border-radius:100px;background:#612CB5;color:#F4F3EF;
+  font-size:15px;font-weight:500;
+}
+
+.mst-fronts-body{display:flex;gap:60px;margin-top:70px;align-items:flex-start;flex-wrap:wrap;}
+.mst-fronts-list{display:flex;flex-direction:column;flex:1 1 500px;min-width:280px;}
+.mst-fronts-item-wrap{padding:18px 0;border-top:1px solid rgba(10,10,10,.08);}
+.mst-fronts-item-wrap:first-child{border-top:none;}
+.mst-fronts-item{
+  all:unset;cursor:pointer;display:block;width:100%;font-family:inherit;
+  font-size:clamp(19px,2vw,25px);font-weight:500;
+  letter-spacing:-.01em;line-height:1.3;color:rgba(10,10,10,.32);transition:color .3s ease;
+}
+.mst-fronts-item:hover{color:rgba(10,10,10,.6);}
+.mst-fronts-item-wrap.active .mst-fronts-item{color:#612CB5;}
+.mst-fronts-item-desc{
+  font-size:14.5px;line-height:1.55;color:#55544D;max-width:520px;margin:0;
+  max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease, opacity .3s ease, margin-top .4s ease;
+}
+.mst-fronts-item-wrap.active .mst-fronts-item-desc{max-height:160px;opacity:1;margin-top:10px;}
+.mst-fronts-photo{
+  position:relative;flex:1 1 400px;min-width:280px;aspect-ratio:638/446;
+  border-radius:20px;overflow:hidden;
+}
+.mst-fronts-photo .mst-fronts-photo-inner{position:absolute;inset:0;opacity:0;transition:opacity .5s ease;}
+.mst-fronts-photo .mst-fronts-photo-inner.active{opacity:1;}
+.mst-fronts-photo .mst-fronts-photo-inner img{width:100%;height:100%;object-fit:cover;display:block;}
+@media (max-width:900px){
+  .mst-fronts-pin-wrapper{height:300vh;}
+  .mst-fronts-pin-inner{padding:24px;}
+  .mst-fronts-card{padding:32px 24px;border-radius:20px;max-height:100%;overflow-y:auto;}
+  .mst-fronts-body{flex-direction:column;gap:24px;margin-top:32px;}
+  .mst-fronts-item-wrap{padding:14px 0;}
+}
+@media (prefers-reduced-motion:reduce){
+  .mst-fronts-photo-inner{transition:none;}
+}
+
+/* ---- como funciona: timeline vertical do método mosten ---- */
+.mst-timeline{position:relative;max-width:760px;margin:0 auto;padding:20px 40px 10px;}
+.mst-timeline::before{
+  content:'';position:absolute;left:50%;top:24px;bottom:24px;width:2px;
+  background:linear-gradient(180deg,rgba(97,44,181,.5),rgba(97,44,181,.06));transform:translateX(-1px);
+}
+.mst-tl-row{display:grid;grid-template-columns:1fr 30px 1fr;align-items:start;padding:24px 0;position:relative;}
+.mst-tl-dot{
+  grid-column:2;width:13px;height:13px;border-radius:50%;background:#612CB5;
+  justify-self:center;margin-top:5px;box-shadow:0 0 0 6px var(--bg);position:relative;z-index:1;
+}
+.mst-tl-content{font-size:14.5px;}
+.mst-tl-a{grid-column:1;text-align:right;padding-right:34px;}
+.mst-tl-b{grid-column:3;text-align:left;padding-left:34px;}
+.mst-tl-code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-label);display:block;margin-bottom:7px;}
+.mst-tl-title{font-size:18px;font-weight:600;letter-spacing:-.01em;margin:0 0 6px;color:#F4F3EF;}
+.mst-tl-desc{font-size:13.5px;line-height:1.55;color:var(--muted-1);margin:0;}
+@media (max-width:768px){
+  .mst-tl-row{grid-template-columns:24px 1fr;padding:20px 0;}
+  .mst-tl-dot{grid-column:1;margin-top:4px;}
+  .mst-tl-content{grid-column:2 !important;text-align:left !important;padding:0 0 0 20px !important;}
+  .mst-timeline::before{left:12px;}
+}
+
+/* ---- o desafio: split com foto ---- */
+.mst-challenge-split{display:grid;grid-template-columns:1.05fr .9fr;min-height:640px;}
+.mst-challenge-text{padding:120px 60px;display:flex;align-items:center;}
+.mst-challenge-photo{position:relative;min-height:420px;}
+@media (max-width:900px){
+  .mst-challenge-split{grid-template-columns:1fr;}
+  .mst-challenge-text{padding:64px 24px;}
+}
+
+/* ---- para quem: cards de métrica com dot accent ---- */
+.mst-metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.mst-metric-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:36px 32px;}
+.mst-metric-dot-line{width:100%;height:1px;background:var(--border);position:relative;margin-bottom:28px;}
+.mst-metric-dot-line::after{content:'';position:absolute;right:0;top:50%;width:7px;height:7px;border-radius:50%;background:var(--accent-label);transform:translateY(-50%);}
+.mst-metric-num{font-size:26px;font-weight:500;letter-spacing:-.01em;color:#F4F3EF;margin:0 0 10px;}
+.mst-metric-num b{color:var(--accent-label);font-weight:600;}
+.mst-metric-label{font-size:14px;line-height:1.4;color:var(--muted-1);margin:0;}
+@media (max-width:760px){
+  .mst-metric-row{grid-template-columns:1fr;}
+}
+
+/* ---- faq: sobre fundo claro, accordion com chevron ---- */
+.mst-faq-item-light{border-top:1px solid rgba(10,10,10,.1);padding:24px 0;transition:background-color .15s ease;}
+.mst-faq-item-light:first-child{border-top:none;}
+.mst-faq-item-light summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  font-size:18px;font-weight:500;letter-spacing:-.01em;color:#0A0A0A;padding:8px 20px;margin:-8px -20px;border-radius:10px;
+  transition:background-color .15s ease;
+}
+.mst-faq-item-light summary::-webkit-details-marker{display:none;}
+.mst-faq-item-light summary:hover{background:rgba(97,44,181,.06);}
+.mst-faq-item-light summary .mst-faq-icon{flex:none;font-size:18px;color:#612CB5;transition:transform .25s ease;}
+.mst-faq-item-light[open] summary .mst-faq-icon{transform:rotate(180deg);}
+.mst-faq-item-light p{font-size:15.5px;line-height:1.65;color:#55544D;margin:14px 20px 0;max-width:820px;}
+
+/* ---- FAQ ---- */
+.mst-faq-item{border-top:1px solid var(--border);padding:26px 0;}
+.mst-faq-item:first-child{border-top:none;}
+.mst-faq-item summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  font-size:18px;font-weight:500;letter-spacing:-.01em;
+}
+.mst-faq-item summary::-webkit-details-marker{display:none;}
+.mst-faq-item summary .mst-faq-icon{flex:none;font-size:20px;color:var(--accent-label);transition:transform .25s ease;}
+.mst-faq-item[open] summary .mst-faq-icon{transform:rotate(45deg);}
+.mst-faq-item p{font-size:15.5px;line-height:1.65;color:var(--muted-1);margin:14px 0 0;max-width:760px;}
+
+@keyframes floatA{0%,100%{transform:translate(0,0);}50%{transform:translate(24px,-34px);}}
+
+@media (max-width:900px){
+  .mst-front-grid{grid-template-columns:1fr !important;}
+  .mst-stat-row{grid-template-columns:1fr !important;max-width:340px;}
+}
+@media (max-width:640px){
+  .mst-form-grid{grid-template-columns:1fr !important;}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal.on{transition:none !important;opacity:1 !important;transform:none !important;}
+  .mst-motion{animation:none !important;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+<header style="position:sticky;top:20px;z-index:50;max-width:1180px;margin:20px auto 0;backdrop-filter:blur(16px);background:var(--header-bg);border:1px solid var(--header-border);border-radius:100px;box-shadow:0 12px 32px rgba(0,0,0,.28);">
+  <div style="padding:0 16px 0 32px;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+    <a href="index.html" aria-label="Mosten" style="display:flex;align-items:center;color:var(--text);">
+      <svg width="100" height="auto" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mosten" style="display:block;">
+        <path fill="currentColor" d="M1250.14,629.78c-13.79,0-23.41-2.81-28.87-8.43-5.48-5.62-8.21-14.41-8.21-26.4v-74.01c0-2.54,2.06-4.6,4.6-4.6h61.06c2.31,0,4.18-1.87,4.18-4.18v-42.13c0-2.31-1.87-4.18-4.18-4.18h-62.44c-2.56,0-4.62-2.09-4.6-4.65l.59-59.69c.03-2.57-2.59-4.33-4.96-3.34l-48.68,20.39c-1.34.56-2.2,1.87-2.2,3.32l.18,39.35c.01,2.55-2.05,4.62-4.6,4.62h-19.47c-2.31,0-4.18,1.87-4.18,4.18v42.13c0,2.31,1.87,4.18,4.18,4.18h18.84c2.54,0,4.6,2.06,4.6,4.6v82.56c0,16.63,2.47,30.64,7.41,42.02,4.94,11.39,13,19.89,24.15,25.51,11.16,5.61,26.1,8.42,44.83,8.42,11.09,0,21.47-.97,31.12-2.92,9.67-1.95,18.24-4.64,25.73-8.08l4.95-48.1c-6.29,2.85-13.19,5.13-20.67,6.86-7.5,1.73-15.28,2.59-23.37,2.59Z"></path>
+        <path fill="currentColor" d="M862.34,479.16c-23.15-19.48-56.67-29.22-100.56-29.22s-77.23,9.74-100.45,29.22c-23.23,19.48-34.83,47.04-34.83,82.69v9.89c0,35.81,11.57,63.33,34.72,82.59,23.15,19.24,56.67,28.87,100.56,28.87s77.41-9.63,100.56-28.87c23.15-19.26,34.72-46.78,34.72-82.59v-9.89c0-35.65-11.57-63.21-34.72-82.69ZM821.33,572.41c0,16.93-5.25,29.97-15.73,39.11-10.49,9.14-25.09,13.7-43.82,13.7s-33.48-4.56-43.82-13.7c-10.34-9.14-15.51-22.17-15.51-39.11v-11.23c0-17.08,5.17-30.19,15.51-39.33,10.34-9.13,24.86-13.7,43.59-13.7s33.74,4.58,44.16,13.7c10.41,9.14,15.62,22.25,15.62,39.33v11.23Z"></path>
+        <path fill="currentColor" d="M533.94,458.23h-72.43l-36.07,15.35v-.82c0-8.03-6.51-14.53-14.53-14.53h-117.38l-37.09,15.78v-9.14c0-3.52-3.58-5.9-6.83-4.55l-65.04,27.12c-1.84.77-3.03,2.56-3.03,4.55v183.07h74.9v-129.6l81.72-34.91c6.12-2.62,12.93,1.88,12.93,8.53v155.98h74.35v-130.03l80.71-34.48c6.12-2.62,12.92,1.88,12.92,8.53v155.98h74.35v-157.33c0-32.85-26.64-59.49-59.49-59.49Z"></path>
+        <path fill="currentColor" d="M1689.32,459.52h-58.89l-36.81,15.67v-9.64c0-3.67-3.73-6.17-7.13-4.76l-42.05,17.39c-1.93.8-3.19,2.68-3.19,4.76v193.4h52.37v-149.89l82.16-35.1c8.71-3.72,18.38,2.67,18.38,12.13v172.85h45.07v-166.91c0-27.57-22.34-49.91-49.91-49.91Z"></path>
+        <path fill="currentColor" d="M1078.06,557.02c-11.31-5.17-26.18-9.77-44.61-13.82-12.44-2.85-22.02-5.51-28.77-7.98-6.74-2.46-11.35-5.12-13.82-7.97-2.48-2.84-3.71-6.29-3.71-10.34v-.9c0-3.74,1.08-6.89,3.25-9.44,2.17-2.55,5.95-4.49,11.35-5.84,5.39-1.35,12.65-2.02,21.8-2.02,14.83,0,28.83,1.61,42.02,4.83,7.43,1.82,14.28,3.97,20.79,6.32,2.57.93,5.24-.93,5.24-3.66v-39.54c0-1.58-.89-3.02-2.35-3.64-7.75-3.29-16.79-6.24-27.27-8.8-13.48-3.3-28.84-4.95-46.07-4.95-29.66,0-52.1,5.37-67.3,16.07-15.21,10.71-22.81,26.78-22.81,48.21v1.8c0,11.99,2.32,22.22,6.97,30.68,4.64,8.46,12.32,15.65,23.03,21.57,10.71,5.92,25.28,10.98,43.7,15.17,12.88,3,22.89,5.66,30,7.98,7.11,2.32,12.06,4.94,14.83,7.86,2.77,2.92,4.16,6.64,4.16,11.13v1.12c0,6.59-2.96,11.5-8.88,14.72-5.92,3.22-15.77,4.84-29.55,4.84-16.33,0-31.43-1.95-45.28-5.84-9.6-2.7-18.47-5.71-26.83-8.93-2.57-.99-5.28.88-5.28,3.64v43.39c0,1.63.93,3.09,2.44,3.68,9.18,3.6,20.07,6.86,32.71,9.78,13.93,3.23,29.66,4.84,47.19,4.84,32.36,0,56.4-5.73,72.14-17.19,15.73-11.46,23.59-28.8,23.59-52.02v-2.25c0-13.48-2.62-24.3-7.86-32.46-5.25-8.17-13.52-14.83-24.83-20Z"></path>
+        <path fill="currentColor" d="M1472.21,461.06c-14.46-7.71-32.47-11.56-54.05-11.56-32.06,0-56.44,8.64-73.14,25.95-16.71,17.31-25.06,41.84-25.06,73.6v32.36c0,32.21,8.95,56.85,26.85,73.92,17.9,17.08,45.06,25.63,81.46,25.63,16.18,0,30.94-1.72,44.27-5.17,12.95-3.34,29.76-7.77,39.6-13.24v-39.51c-9.58,4.52-25,8.37-35.55,11.17-12.44,3.3-25.61,4.94-39.55,4.94-12.44,0-22.96-1.23-31.58-3.7-8.62-2.48-15.54-6.03-20.78-10.67-5.25-4.65-9.03-10.07-11.35-16.29-2.32-6.22-3.48-13.15-3.48-20.79v-3.37h143.14c.75-4.95,1.35-10.11,1.8-15.51.45-5.4.67-10.71.67-15.96v-8.08c0-19.63-3.59-36.55-10.78-50.78-7.19-14.23-18.02-25.21-32.47-32.93ZM1464.19,542.11l-91.55.84c-1.77.02-3.25-1.51-3.2-3.28.49-15.62,4.47-27.75,11.97-36.36,8.01-9.21,20.26-13.82,36.74-13.82,11.09,0,20.26,2.06,27.53,6.18,7.27,4.12,12.7,10.07,16.29,17.86,3.25,7.03,5.03,15.46,5.35,25.3.06,1.74-1.39,3.25-3.13,3.26Z"></path>
+      </svg>
+    </a>
+    <nav style="display:flex;align-items:center;gap:32px;font-size:14px;font-weight:400;color:var(--muted-4);">
+      <a href="index.html">Início</a>
+      <a href="Empresa - Standalone.html">Empresa</a>
+      <span style="color:var(--text);">O que fazemos</span>
+      <a href="index.html#cases">Cases</a>
+      <a href="Carreiras - Standalone.html">Carreiras</a>
+      <a href="#">Insights</a>
+      <button id="themeToggle" aria-label="Alternar para tema claro" aria-pressed="false" style="width:36px;height:36px;border-radius:50%;border:1px solid var(--border-pill);background:transparent;color:var(--text);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;line-height:1;padding:0;">◐</button>
+      <a href="#form" style="padding:10px 20px;border-radius:100px;border:1px solid var(--border-pill);color:var(--text);">Fale com a Mosten</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content">
+  <!-- HERO -->
+  <section class="mst-hero">
+    <div class="mst-hero-halo-a" aria-hidden="true"></div>
+    <div class="mst-hero-halo-b" aria-hidden="true"></div>
+    <div class="mst-shell" style="max-width:1000px;position:relative;z-index:1;">
+      <div class="mst-eyebrow" style="color:var(--accent-label);margin-bottom:24px;">Consultoria</div>
+      <div class="mst-hero-title-wrap">
+        <div class="mst-hero-halo-center" aria-hidden="true"></div>
+        <h1 class="mst-h1-huge" style="position:relative;">Consultoria em <span class="mst-rotate-word" id="heroRotateWord">tecnologia</span><br>aplicada à operação real</h1>
+      </div>
+      <p style="font-size:17px;line-height:1.65;color:var(--muted-1);max-width:680px;margin:0 auto 20px;">A Mosten entende o contexto da operação antes de recomendar tecnologia. O objetivo é identificar causas, riscos e prioridades para definir o que realmente precisa ser feito.</p>
+      <p style="font-size:17px;line-height:1.65;color:var(--muted-1);max-width:680px;margin:0 auto 40px;">Software, dados, automação, inteligência artificial, segurança e infraestrutura entram de acordo com o diagnóstico e com o impacto esperado para a operação.</p>
+      <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;border-radius:100px;background:#612CB5;color:#F4F3EF;font-weight:400;font-size:15px;">Fale com um especialista</a>
+    </div>
+  </section>
+
+  <!-- O DESAFIO -->
+  <section id="challenge" class="reveal mst-challenge-split" style="background:#F4F3EF;">
+    <div class="mst-challenge-text">
+      <div style="max-width:630px;">
+        <div class="mst-eyebrow" style="color:#612CB5;margin-bottom:24px;">O desafio</div>
+        <h2 class="mst-h2-std" style="color:#0A0A0A;">O desafio é fazer a tecnologia funcionar na operação</h2>
+        <p style="font-size:16px;line-height:1.65;color:#55544D;margin:0 0 20px;">Grandes empresas convivem com sistemas legados, dados distribuídos e processos que envolvem diferentes áreas.</p>
+        <p style="font-size:16px;line-height:1.65;color:#55544D;margin:0;">Sem um diagnóstico claro, iniciativas podem avançar sem resolver a causa do problema. A consultoria ajuda a definir prioridades, escolher o caminho mais adequado e acompanhar a implementação.</p>
+      </div>
+    </div>
+    <div class="mst-challenge-photo">
+      <img src="assets/desafio-codigo.jpg" alt="Tela de editor de código com terminal aberto, representando o contexto técnico do desafio" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+    </div>
+  </section>
+
+  <!-- COMO FUNCIONA -->
+  <section id="how" class="reveal" style="padding:120px 0 130px;">
+    <div class="mst-shell" style="max-width:820px;margin-bottom:64px;text-align:center;">
+      <div class="mst-eyebrow" style="color:var(--accent-label);margin-bottom:24px;">Como funciona</div>
+      <h2 class="mst-h2-std">Engenharia Aplicada do diagnóstico à operação</h2>
+      <p style="font-size:17px;line-height:1.65;color:var(--muted-1);margin:0 0 16px;">A atuação da Mosten parte do entendimento do negócio e avança até a implementação e evolução da solução.</p>
+      <p style="font-size:17px;line-height:1.65;color:var(--muted-1);margin:0;">O Método Mosten estrutura essa jornada em oito etapas:</p>
+    </div>
+    <div class="mst-timeline">
+      <div class="mst-tl-row">
+        <div class="mst-tl-content mst-tl-a">
+          <span class="mst-tl-code">01</span>
+          <h4 class="mst-tl-title">Compreender</h4>
+          <p class="mst-tl-desc">Entendimento do negócio antes de qualquer decisão técnica.</p>
+        </div>
+        <div class="mst-tl-dot"></div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-dot"></div>
+        <div class="mst-tl-content mst-tl-b">
+          <span class="mst-tl-code">02</span>
+          <h4 class="mst-tl-title">Diagnosticar</h4>
+          <p class="mst-tl-desc">Identificação de causas, riscos e oportunidades.</p>
+        </div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-content mst-tl-a">
+          <span class="mst-tl-code">03</span>
+          <h4 class="mst-tl-title">Priorizar</h4>
+          <p class="mst-tl-desc">Definição do que vale atacar primeiro.</p>
+        </div>
+        <div class="mst-tl-dot"></div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-dot"></div>
+        <div class="mst-tl-content mst-tl-b">
+          <span class="mst-tl-code">04</span>
+          <h4 class="mst-tl-title">Construir</h4>
+          <p class="mst-tl-desc">Desenvolvimento da solução técnica indicada.</p>
+        </div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-content mst-tl-a">
+          <span class="mst-tl-code">05</span>
+          <h4 class="mst-tl-title">Validar</h4>
+          <p class="mst-tl-desc">Confirmação com o contexto real da operação.</p>
+        </div>
+        <div class="mst-tl-dot"></div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-dot"></div>
+        <div class="mst-tl-content mst-tl-b">
+          <span class="mst-tl-code">06</span>
+          <h4 class="mst-tl-title">Implantar</h4>
+          <p class="mst-tl-desc">Entrada em produção dentro da operação.</p>
+        </div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-content mst-tl-a">
+          <span class="mst-tl-code">07</span>
+          <h4 class="mst-tl-title">Medir</h4>
+          <p class="mst-tl-desc">Acompanhamento do resultado após a entrega.</p>
+        </div>
+        <div class="mst-tl-dot"></div>
+      </div>
+      <div class="mst-tl-row">
+        <div class="mst-tl-dot"></div>
+        <div class="mst-tl-content mst-tl-b">
+          <span class="mst-tl-code">08</span>
+          <h4 class="mst-tl-title">Evoluir</h4>
+          <p class="mst-tl-desc">Ajuste contínuo conforme a operação muda.</p>
+        </div>
+      </div>
+    </div>
+    <div class="mst-shell" style="max-width:820px;margin-top:24px;text-align:center;">
+      <p style="font-size:17px;line-height:1.65;color:var(--muted-1);margin:0;">A abordagem também incorpora a lógica de <span style="color:var(--accent-label);">Forward Deployed Engineer</span>, aproximando especialistas da Mosten do contexto real da operação.</p>
+    </div>
+  </section>
+
+  <!-- FRENTES DE ATUAÇÃO -->
+  <section id="fronts" class="reveal mst-fronts-pin-wrapper" data-pin-steps="4">
+   <div class="mst-fronts-pin-inner">
+    <div class="mst-fronts-card">
+      <div style="max-width:900px;">
+        <div class="mst-eyebrow" style="color:#612CB5;margin-bottom:24px;">Frentes de atuação</div>
+        <h2 class="mst-h2-std" style="color:#0A0A0A;">Quatro frentes de consultoria</h2>
+        <p style="font-size:16px;line-height:1.6;color:#55544D;max-width:680px;margin:0;">A frente de atuação é definida pelo desafio da operação. Dependendo do caso, diferentes competências podem trabalhar de forma integrada no mesmo projeto.</p>
+      </div>
+      <div class="mst-fronts-body">
+        <div class="mst-fronts-list" id="frontsList">
+          <div class="mst-fronts-item-wrap active" data-target="processos">
+            <button type="button" class="mst-fronts-item">Consultoria em processos e operações</button>
+            <p class="mst-fronts-item-desc">Análise de fluxos, responsabilidades, controles e pontos de decisão para identificar gargalos, retrabalho e falhas de governança. A partir do diagnóstico, estruturamos processos e modelos operacionais mais eficientes.</p>
+          </div>
+          <div class="mst-fronts-item-wrap" data-target="software">
+            <button type="button" class="mst-fronts-item">Consultoria em software, arquitetura e integrações</button>
+            <p class="mst-fronts-item-desc">Avaliação de sistemas e aplicações, levantamento de requisitos, desenho de solução, arquitetura, modernização de sistemas legados e integração entre plataformas. O foco é definir uma estrutura técnica coerente com a operação e com a evolução do negócio.</p>
+          </div>
+          <div class="mst-fronts-item-wrap" data-target="dados">
+            <button type="button" class="mst-fronts-item">Consultoria em dados, analytics e inteligência artificial</button>
+            <p class="mst-fronts-item-desc">Organização de dados, definição de indicadores, arquitetura e governança, analytics e avaliação de casos de uso de inteligência artificial. O objetivo é criar bases confiáveis para análise, decisão e aplicação de IA.</p>
+          </div>
+          <div class="mst-fronts-item-wrap" data-target="seguranca">
+            <button type="button" class="mst-fronts-item">Consultoria em segurança, governança e infraestrutura</button>
+            <p class="mst-fronts-item-desc">Avaliação de riscos, acessos, conformidade, nuvem, continuidade e observabilidade. A atuação apoia a definição de padrões e controles sem comprometer a operação.</p>
+          </div>
+        </div>
+        <div class="mst-fronts-photo" id="frontsPhoto">
+          <div class="mst-fronts-photo-inner active" data-photo="processos">
+            <img src="assets/frentes-processos.jpg" alt="Equipe em reunião de planejamento diante de um quadro branco, mapeando um processo" loading="lazy">
+          </div>
+          <div class="mst-fronts-photo-inner" data-photo="software">
+            <img src="assets/frentes-software.jpg" alt="Tela de computador exibindo um pipeline de integração e implantação de software" loading="lazy">
+          </div>
+          <div class="mst-fronts-photo-inner" data-photo="dados">
+            <img src="assets/frentes-dados.jpg" alt="Analista revisando painéis de dados e indicadores em múltiplos monitores" loading="lazy">
+          </div>
+          <div class="mst-fronts-photo-inner" data-photo="seguranca">
+            <img src="assets/frentes-seguranca.jpg" alt="Painel de rede com cabos organizados, representando infraestrutura e governança de TI" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- DO APOIO A UMA DECISÃO À JORNADA COMPLETA -->
+  <section class="reveal" style="padding:120px 0;background:#612CB5;">
+    <div class="mst-shell">
+      <div class="mst-eyebrow" style="color:rgba(244,243,239,.7);margin-bottom:24px;">Do apoio a uma decisão à jornada completa</div>
+      <h2 class="mst-h2-std" style="color:#F4F3EF;max-width:1000px;">A consultoria pode atender uma necessidade pontual, apoiar uma decisão específica ou acompanhar uma jornada de diagnóstico, planejamento e implementação.</h2>
+      <p style="font-size:15.5px;line-height:1.6;margin:0 0 32px;color:rgba(244,243,239,.75);max-width:480px;">O formato é definido de acordo com o desafio, o escopo e o momento da operação.</p>
+      <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:100px;background:#0A0A0A;color:#F4F3EF;font-weight:400;font-size:15px;">Fale com um especialista <i class="ph-bold ph-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section id="who" class="reveal mst-challenge-split" style="background:#F4F3EF;">
+    <div class="mst-challenge-photo">
+      <img src="assets/paraquem-skyline.jpg" alt="Vista de baixo para cima de um arranha-céu de vidro, representando escala e complexidade enterprise" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+    </div>
+    <div class="mst-challenge-text">
+      <div style="max-width:630px;">
+        <div class="mst-eyebrow" style="color:#612CB5;margin-bottom:24px;">Para quem</div>
+        <h2 class="mst-h2-std" style="color:#0A0A0A;">Para empresas que precisam de clareza antes de <span style="color:#7441CF;">investir em tecnologia</span></h2>
+        <p style="font-size:16px;line-height:1.65;color:#55544D;margin:0 0 16px;">A consultoria atende operações enterprise com sistemas, dados e processos distribuídos entre diferentes áreas, além de requisitos de segurança e governança.</p>
+        <p style="font-size:16px;line-height:1.65;color:#55544D;margin:0;">A Mosten combina visão de negócio e conhecimento técnico para transformar o diagnóstico em prioridades e um plano de ação viável.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="reveal" style="padding:120px 0;background:#F4F3EF;">
+    <div class="mst-shell" style="max-width:950px;">
+      <div style="text-align:center;max-width:800px;margin:0 auto 56px;">
+        <div class="mst-eyebrow" style="color:#612CB5;margin-bottom:24px;">Perguntas frequentes</div>
+        <h2 class="mst-h2-std" style="margin:0;color:#0A0A0A;">Perguntas frequentes sobre a consultoria em tecnologia da Mosten.</h2>
+      </div>
+      <div>
+        <details class="mst-faq-item-light" open>
+          <summary>O que é Engenharia Aplicada? <i class="ph-bold ph-caret-down mst-faq-icon" aria-hidden="true"></i></summary>
+          <p>É o modelo de atuação da Mosten que aplica investigação de negócio antes da construção de qualquer solução técnica, inspirado no conceito de Forward Deployed Engineer e formalizado no Método Mosten.</p>
+        </details>
+        <details class="mst-faq-item-light">
+          <summary>Em que a consultoria da Mosten é diferente de uma consultoria de TI tradicional? <i class="ph-bold ph-caret-down mst-faq-icon" aria-hidden="true"></i></summary>
+          <p>A Mosten entra no contexto real da operação do cliente antes de recomendar ferramenta ou fornecedor. O diagnóstico de negócio vem antes da escolha técnica, não depois.</p>
+        </details>
+        <details class="mst-faq-item-light">
+          <summary>A consultoria pode ser contratada para um projeto pontual? <i class="ph-bold ph-caret-down mst-faq-icon" aria-hidden="true"></i></summary>
+          <p>Sim. O serviço atende desde o apoio a uma decisão específica até jornadas completas de diagnóstico, planejamento e acompanhamento de implementação.</p>
+        </details>
+        <details class="mst-faq-item-light">
+          <summary>Quais frentes a consultoria cobre? <i class="ph-bold ph-caret-down mst-faq-icon" aria-hidden="true"></i></summary>
+          <p>Processos e operações; software, arquitetura e integrações; dados, analytics e inteligência artificial; e segurança, governança e infraestrutura — isoladas ou combinadas no mesmo diagnóstico.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMULÁRIO -->
+  <section id="form" class="reveal" style="padding:130px 0 150px;position:relative;overflow:hidden;">
+    <div class="mst-motion" style="position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(97,44,181,.24),transparent 70%);filter:blur(10px);animation:floatA 16s ease-in-out infinite;pointer-events:none;"></div>
+    <div class="mst-shell" style="max-width:900px;position:relative;">
+      <div style="max-width:600px;margin:0 auto 56px;text-align:center;">
+        <div class="mst-eyebrow" style="color:var(--accent-label);margin-bottom:24px;">Formulário</div>
+        <h2 class="mst-h2-std" style="margin:0 0 20px;">Comece pelo diagnóstico da sua operação.</h2>
+        <p style="font-size:16.5px;line-height:1.6;color:var(--muted-1);margin:0;">Converse com nosso time sobre o desafio da sua operação e o que precisa ser resolvido.</p>
+      </div>
+      <form id="consultoriaForm" class="mst-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div style="grid-column:1/-1;">
+          <label for="mst-nome" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">Nome completo <span style="color:#B79BE8;">*</span></label>
+          <input id="mst-nome" class="mst-field" type="text" placeholder="Nome completo" required>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label for="mst-empresa" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">Empresa <span style="color:#B79BE8;">*</span></label>
+          <input id="mst-empresa" class="mst-field" type="text" placeholder="Empresa" required>
+        </div>
+        <div>
+          <label for="mst-telefone" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">Telefone <span style="color:#B79BE8;">*</span></label>
+          <input id="mst-telefone" class="mst-field" type="tel" placeholder="(00) 00000-0000" required>
+        </div>
+        <div>
+          <label for="mst-email" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">E-mail <span style="color:#B79BE8;">*</span></label>
+          <input id="mst-email" class="mst-field" type="email" placeholder="E-mail" required>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label for="mst-frente" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">Frente de maior interesse <span style="color:#B79BE8;">*</span></label>
+          <div class="mst-select-wrap">
+            <select id="mst-frente" class="mst-field" required>
+              <option value="" disabled selected>Selecione..</option>
+              <option value="processos">Processos e operações</option>
+              <option value="software">Software, arquitetura e integrações</option>
+              <option value="dados">Dados, analytics e inteligência artificial</option>
+              <option value="seguranca">Segurança, governança e infraestrutura</option>
+              <option value="indefinido">Ainda não sei</option>
+            </select>
+          </div>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label for="mst-mensagem" style="display:block;font-size:15px;color:var(--text);margin-bottom:10px;">Mensagem</label>
+          <textarea id="mst-mensagem" class="mst-field" placeholder="Conte um pouco sobre o desafio e o contexto da sua operação" rows="5"></textarea>
+        </div>
+        <p style="grid-column:1/-1;font-size:13px;line-height:1.6;color:var(--muted-3);margin:0;">Ao enviar este formulário de contato, você autoriza a Mosten a utilizar os dados conforme <a href="#" style="color:#B79BE8;text-decoration:underline;">Política de Privacidade</a>.</p>
+        <button type="submit" class="mst-submit" style="grid-column:1/-1;">Fale com um especialista</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer style="padding:64px 40px 32px;border-top:1px solid var(--border);">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="mst-split" style="display:grid;grid-template-columns:1.4fr .7fr .7fr .7fr;gap:48px;padding-bottom:48px;">
+      <div>
+        <svg width="120" height="auto" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mosten" style="display:block;color:var(--text);">
+          <path fill="currentColor" d="M1250.14,629.78c-13.79,0-23.41-2.81-28.87-8.43-5.48-5.62-8.21-14.41-8.21-26.4v-74.01c0-2.54,2.06-4.6,4.6-4.6h61.06c2.31,0,4.18-1.87,4.18-4.18v-42.13c0-2.31-1.87-4.18-4.18-4.18h-62.44c-2.56,0-4.62-2.09-4.6-4.65l.59-59.69c.03-2.57-2.59-4.33-4.96-3.34l-48.68,20.39c-1.34.56-2.2,1.87-2.2,3.32l.18,39.35c.01,2.55-2.05,4.62-4.6,4.62h-19.47c-2.31,0-4.18,1.87-4.18,4.18v42.13c0,2.31,1.87,4.18,4.18,4.18h18.84c2.54,0,4.6,2.06,4.6,4.6v82.56c0,16.63,2.47,30.64,7.41,42.02,4.94,11.39,13,19.89,24.15,25.51,11.16,5.61,26.1,8.42,44.83,8.42,11.09,0,21.47-.97,31.12-2.92,9.67-1.95,18.24-4.64,25.73-8.08l4.95-48.1c-6.29,2.85-13.19,5.13-20.67,6.86-7.5,1.73-15.28,2.59-23.37,2.59Z"></path>
+          <path fill="currentColor" d="M862.34,479.16c-23.15-19.48-56.67-29.22-100.56-29.22s-77.23,9.74-100.45,29.22c-23.23,19.48-34.83,47.04-34.83,82.69v9.89c0,35.81,11.57,63.33,34.72,82.59,23.15,19.24,56.67,28.87,100.56,28.87s77.41-9.63,100.56-28.87c23.15-19.26,34.72-46.78,34.72-82.59v-9.89c0-35.65-11.57-63.21-34.72-82.69ZM821.33,572.41c0,16.93-5.25,29.97-15.73,39.11-10.49,9.14-25.09,13.7-43.82,13.7s-33.48-4.56-43.82-13.7c-10.34-9.14-15.51-22.17-15.51-39.11v-11.23c0-17.08,5.17-30.19,15.51-39.33,10.34-9.13,24.86-13.7,43.59-13.7s33.74,4.58,44.16,13.7c10.41,9.14,15.62,22.25,15.62,39.33v11.23Z"></path>
+          <path fill="currentColor" d="M533.94,458.23h-72.43l-36.07,15.35v-.82c0-8.03-6.51-14.53-14.53-14.53h-117.38l-37.09,15.78v-9.14c0-3.52-3.58-5.9-6.83-4.55l-65.04,27.12c-1.84.77-3.03,2.56-3.03,4.55v183.07h74.9v-129.6l81.72-34.91c6.12-2.62,12.93,1.88,12.93,8.53v155.98h74.35v-130.03l80.71-34.48c6.12-2.62,12.92,1.88,12.92,8.53v155.98h74.35v-157.33c0-32.85-26.64-59.49-59.49-59.49Z"></path>
+          <path fill="currentColor" d="M1689.32,459.52h-58.89l-36.81,15.67v-9.64c0-3.67-3.73-6.17-7.13-4.76l-42.05,17.39c-1.93.8-3.19,2.68-3.19,4.76v193.4h52.37v-149.89l82.16-35.1c8.71-3.72,18.38,2.67,18.38,12.13v172.85h45.07v-166.91c0-27.57-22.34-49.91-49.91-49.91Z"></path>
+          <path fill="currentColor" d="M1078.06,557.02c-11.31-5.17-26.18-9.77-44.61-13.82-12.44-2.85-22.02-5.51-28.77-7.98-6.74-2.46-11.35-5.12-13.82-7.97-2.48-2.84-3.71-6.29-3.71-10.34v-.9c0-3.74,1.08-6.89,3.25-9.44,2.17-2.55,5.95-4.49,11.35-5.84,5.39-1.35,12.65-2.02,21.8-2.02,14.83,0,28.83,1.61,42.02,4.83,7.43,1.82,14.28,3.97,20.79,6.32,2.57.93,5.24-.93,5.24-3.66v-39.54c0-1.58-.89-3.02-2.35-3.64-7.75-3.29-16.79-6.24-27.27-8.8-13.48-3.3-28.84-4.95-46.07-4.95-29.66,0-52.1,5.37-67.3,16.07-15.21,10.71-22.81,26.78-22.81,48.21v1.8c0,11.99,2.32,22.22,6.97,30.68,4.64,8.46,12.32,15.65,23.03,21.57,10.71,5.92,25.28,10.98,43.7,15.17,12.88,3,22.89,5.66,30,7.98,7.11,2.32,12.06,4.94,14.83,7.86,2.77,2.92,4.16,6.64,4.16,11.13v1.12c0,6.59-2.96,11.5-8.88,14.72-5.92,3.22-15.77,4.84-29.55,4.84-16.33,0-31.43-1.95-45.28-5.84-9.6-2.7-18.47-5.71-26.83-8.93-2.57-.99-5.28.88-5.28,3.64v43.39c0,1.63.93,3.09,2.44,3.68,9.18,3.6,20.07,6.86,32.71,9.78,13.93,3.23,29.66,4.84,47.19,4.84,32.36,0,56.4-5.73,72.14-17.19,15.73-11.46,23.59-28.8,23.59-52.02v-2.25c0-13.48-2.62-24.3-7.86-32.46-5.25-8.17-13.52-14.83-24.83-20Z"></path>
+          <path fill="currentColor" d="M1472.21,461.06c-14.46-7.71-32.47-11.56-54.05-11.56-32.06,0-56.44,8.64-73.14,25.95-16.71,17.31-25.06,41.84-25.06,73.6v32.36c0,32.21,8.95,56.85,26.85,73.92,17.9,17.08,45.06,25.63,81.46,25.63,16.18,0,30.94-1.72,44.27-5.17,12.95-3.34,29.76-7.77,39.6-13.24v-39.51c-9.58,4.52-25,8.37-35.55,11.17-12.44,3.3-25.61,4.94-39.55,4.94-12.44,0-22.96-1.23-31.58-3.7-8.62-2.48-15.54-6.03-20.78-10.67-5.25-4.65-9.03-10.07-11.35-16.29-2.32-6.22-3.48-13.15-3.48-20.79v-3.37h143.14c.75-4.95,1.35-10.11,1.8-15.51.45-5.4.67-10.71.67-15.96v-8.08c0-19.63-3.59-36.55-10.78-50.78-7.19-14.23-18.02-25.21-32.47-32.93ZM1464.19,542.11l-91.55.84c-1.77.02-3.25-1.51-3.2-3.28.49-15.62,4.47-27.75,11.97-36.36,8.01-9.21,20.26-13.82,36.74-13.82,11.09,0,20.26,2.06,27.53,6.18,7.27,4.12,12.7,10.07,16.29,17.86,3.25,7.03,5.03,15.46,5.35,25.3.06,1.74-1.39,3.25-3.13,3.26Z"></path>
+        </svg>
+        <p style="font-size:15px;color:var(--muted-2);max-width:320px;margin:20px 0 0;">Negócios e tecnologia caminham juntos.</p>
+      </div>
+      <div>
+        <h4 style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-3);margin:0 0 16px;font-weight:400;">Consultoria</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px;color:var(--muted-4);">
+          <a href="#challenge">O desafio</a>
+          <a href="#how">Como funciona</a>
+          <a href="#fronts">Frentes de atuação</a>
+          <a href="#faq">FAQ</a>
+          <a href="#form">Fale com um especialista</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-3);margin:0 0 16px;font-weight:400;">Saiba mais</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px;color:var(--muted-4);">
+          <a href="index.html#cases">Cases</a>
+          <a href="Empresa - Standalone.html">Empresa</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted-3);margin:0 0 16px;font-weight:400;">Contato</h4>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14.5px;color:var(--muted-4);">
+          <a href="mailto:contato@mosten.com">contato@mosten.com</a>
+          <a href="#">LinkedIn</a>
+          <span>Santos · São Paulo</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted-3);">
+      <span>© 2026 Mosten. Todos os direitos reservados. · Última atualização: 2026-08</span>
+      <span>Negócios e tecnologia caminham juntos.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  btn.addEventListener('click', function(){
+    var light = document.documentElement.classList.toggle('light');
+    btn.textContent = light ? '◑' : '◐';
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+    btn.setAttribute('aria-label', light ? 'Alternar para tema escuro' : 'Alternar para tema claro');
+  });
+
+  var form = document.getElementById('consultoriaForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+  });
+
+  var els = document.querySelectorAll('.reveal');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+
+  var rotateEl = document.getElementById('heroRotateWord');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (rotateEl && !reduceMotion) {
+    var rotateWords = ['tecnologia', 'dados', 'inteligência artificial'];
+    var rotateIdx = 0;
+    setInterval(function(){
+      rotateEl.style.opacity = '0';
+      rotateEl.style.transform = 'translateY(6px)';
+      setTimeout(function(){
+        rotateIdx = (rotateIdx + 1) % rotateWords.length;
+        rotateEl.textContent = rotateWords[rotateIdx];
+        rotateEl.style.transform = 'translateY(-6px)';
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            rotateEl.style.opacity = '1';
+            rotateEl.style.transform = 'translateY(0)';
+          });
+        });
+      }, 350);
+    }, 2600);
+  }
+
+  var frontsWrapper = document.querySelector('.mst-fronts-pin-wrapper');
+  var frontsList = document.getElementById('frontsList');
+  var frontsPhoto = document.getElementById('frontsPhoto');
+  if (frontsWrapper && frontsList && frontsPhoto) {
+    var frontItems = frontsList.querySelectorAll('.mst-fronts-item-wrap');
+    var photoLayers = frontsPhoto.querySelectorAll('.mst-fronts-photo-inner');
+    var frontKeys = [].map.call(frontItems, function(el){ return el.getAttribute('data-target'); });
+
+    function setActiveFront(key) {
+      frontItems.forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-target') === key); });
+      photoLayers.forEach(function(el){ el.classList.toggle('active', el.getAttribute('data-photo') === key); });
+    }
+
+    frontsList.addEventListener('click', function(e){
+      var wrap = e.target.closest('.mst-fronts-item-wrap');
+      if (!wrap) return;
+      setActiveFront(wrap.getAttribute('data-target'));
+    });
+
+    // enquanto a seção estiver "presa" na tela (pin), o passo ativo avança
+    // conforme o progresso do scroll dentro da altura extra do wrapper
+    var frontsTicking = false;
+    function updateFrontsScroll() {
+      frontsTicking = false;
+      var rect = frontsWrapper.getBoundingClientRect();
+      var viewportH = window.innerHeight;
+      var scrollableDist = frontsWrapper.offsetHeight - viewportH;
+      if (scrollableDist <= 0) return;
+      var progress = (-rect.top) / scrollableDist;
+      progress = Math.min(1, Math.max(0, progress));
+      var idx = Math.min(frontKeys.length - 1, Math.floor(progress * frontKeys.length));
+      setActiveFront(frontKeys[idx]);
+    }
+    window.addEventListener('scroll', function(){
+      if (!frontsTicking) {
+        frontsTicking = true;
+        requestAnimationFrame(updateFrontsScroll);
+      }
+    }, { passive: true });
+    updateFrontsScroll();
+  }
+})();
+</script>
+</body>
+</html>
