@@ -161,10 +161,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .mst-h1-huge{font-size:clamp(34px,4.8vw,58px);line-height:1.18;letter-spacing:-.03em;font-weight:400;margin:0 0 28px;}
 
 /* ---- hero: mídia (flutua sobre o limite entre o hero e a seção seguinte) ---- */
-.mst-hero-media{margin-top:56px;margin-bottom:-140px;position:relative;z-index:2;}
+.mst-hero-has-media{padding-bottom:310px;}
+.mst-hero-media-shell{margin-top:-215px;position:relative;z-index:2;}
 .mst-hero-media img{width:100%;height:auto;display:block;border-radius:20px;aspect-ratio:1280/506;object-fit:cover;box-shadow:0 30px 60px rgba(0,0,0,.35);}
 @media (max-width:760px){
-  .mst-hero-media{margin-bottom:-60px;}
+  .mst-hero-has-media{padding-bottom:80px;}
+  .mst-hero-media-shell{margin-top:-55px;}
 }
 
 /* ---- formulário ---- */
@@ -385,7 +387,7 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
 
 <main id="main-content">
   <!-- HERO -->
-  <section class="mst-hero" style="padding-bottom:20px;">
+  <section class="mst-hero mst-hero-has-media">
     <div class="mst-hero-halo-a" aria-hidden="true"></div>
     <div class="mst-hero-halo-b" aria-hidden="true"></div>
     <div class="mst-shell" style="max-width:900px;position:relative;z-index:1;">
@@ -394,12 +396,13 @@ select.mst-field{appearance:none;-webkit-appearance:none;-moz-appearance:none;pa
       <p style="font-size:17px;line-height:1.65;color:var(--muted-1);max-width:680px;margin:0 auto 40px;">Selecionamos cada profissional com curadoria técnica, integramos ao time em poucos dias e acompanhamos a entrega com uma Business Partner dedicada.</p>
       <a href="#formulario" style="display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 30px;border-radius:100px;background:#612CB5;color:#F4F3EF;font-weight:400;font-size:15px;">Solicitar um especialista</a>
     </div>
-    <div class="mst-shell" style="max-width:960px;position:relative;z-index:1;">
-      <div class="mst-hero-media">
-        <img src="assets/outsourcing-hero.gif" alt="Consultor de tecnologia apresentando código em um laptop durante uma reunião com o cliente" loading="lazy">
-      </div>
-    </div>
   </section>
+
+  <div class="mst-shell mst-hero-media-shell" style="max-width:960px;">
+    <div class="mst-hero-media">
+      <img src="assets/outsourcing-hero.gif" alt="Consultor de tecnologia apresentando código em um laptop durante uma reunião com o cliente" loading="lazy">
+    </div>
+  </div>
 
   <!-- SEÇÃO DE NÚMEROS -->
   <section id="numeros" class="reveal" style="padding:250px 0 110px;background:#F4F3EF;">
